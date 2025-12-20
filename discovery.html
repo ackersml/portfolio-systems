@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Discovery - Book Discovery Call | Michelle Ackers</title>
+    <meta name="description" content="Book a project discovery call with $500 USD deposit. Refundable if we don't move forward, applied to project if we do.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <!-- Google Fonts - Feminine, Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sage-green: #87A96B;
+            --lavender: #B8A9D9;
+            --blush-pink: #F4C2C2;
+            --warm-cream: #FAF7F2;
+            --soft-beige: #F5F1E8;
+            --warm-gray: #6B6B6B;
+            --deep-sage: #6B8E5A;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #FAF7F2 0%, #F5F1E8 100%);
+            color: #3A3A3A;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F5F1E8; }
+        ::-webkit-scrollbar-thumb { background: var(--sage-green); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--deep-sage); }
+        
+        .bg-organic {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--sage-green) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--lavender) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--blush-pink) 0%, transparent 50%);
+        }
+
+        ::selection { background-color: var(--sage-green); color: white; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(107, 142, 90, 0.1);
+        }
+
+        /* Stripe Elements Styling */
+        .StripeElement {
+            background-color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(107, 142, 90, 0.2);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .StripeElement--focus {
+            border-color: var(--sage-green);
+            box-shadow: 0 0 0 3px rgba(135, 169, 107, 0.1);
+        }
+
+        .StripeElement--invalid {
+            border-color: var(--blush-pink);
+        }
+
+        .StripeElement--complete {
+            border-color: var(--sage-green);
+        }
+    </style>
+</head>
+<body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen">
+
+    <div class="bg-organic"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/30 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-['Playfair_Display'] font-medium text-[#3A3A3A] flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-sm shadow-lg group-hover:scale-110 transition-transform">
+                    MA
+                </div>
+                <span class="group-hover:text-[var(--sage-green)] transition-colors">Michelle Ackers</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--warm-gray)] font-['Inter']">
+                <a href="services.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Services</a>
+                <a href="portfolio.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Portfolio</a>
+                <a href="about.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">About</a>
+            </div>
+
+                <a href="discovery.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                Book Discovery
+            </a>
+            
+            <button id="mobile-menu-button" class="md:hidden text-[var(--warm-gray)] hover:text-[var(--sage-green)]">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 stroke-[1.5]"></i>
+                <i data-lucide="x" id="close-icon" class="w-6 h-6 stroke-[1.5] hidden"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg">
+            <div class="flex flex-col px-6 py-6 gap-4">
+                <a href="services.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Services</a>
+                <a href="portfolio.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Portfolio</a>
+                <a href="about.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">About</a>
+                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all mt-2">
+                    Book Discovery
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow pt-20">
+        
+        <!-- HERO SECTION -->
+        <section class="py-24 px-6 relative overflow-hidden">
+            <div class="absolute top-20 right-10 w-64 h-64 bg-gradient-to-br from-[var(--lavender)]/20 to-[var(--blush-pink)]/20 rounded-full blur-3xl"></div>
+            
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Project Discovery</span>
+                <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6 leading-tight">
+                    Start Your Project <br>with Discovery
+                </h1>
+                <p class="text-xl md:text-2xl text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] mb-8 max-w-2xl mx-auto leading-relaxed">
+                    Book a 30-45 minute call to discuss your platform build and receive a detailed proposal within 3-5 business days.
+                </p>
+                <div class="glass-panel p-6 rounded-3xl mb-8 inline-block">
+                    <p class="text-lg text-[#2A2A2A] font-['Cormorant_Garamond'] mb-2">
+                        <span class="font-semibold text-[var(--sage-green)]">$500 USD Discovery Deposit</span>
+                    </p>
+                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">
+                        Refundable if we don't move forward • Applied to project if we do
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT IS DISCOVERY SECTION -->
+        <section class="py-16 px-6 bg-white/40">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8 text-center">
+                    What's Included in Discovery
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white flex-shrink-0">
+                                <i data-lucide="video" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">30-45 Minute Video Call</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Discuss your project, goals, and requirements in detail.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4] flex items-center justify-center text-white flex-shrink-0">
+                                <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Technical Requirements Assessment</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Evaluate your technical needs and existing systems.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--blush-pink)] to-[#E8A8A8] flex items-center justify-center text-white flex-shrink-0">
+                                <i data-lucide="calendar" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Preliminary Scope & Timeline</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Initial estimate of project scope and delivery timeline.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--lavender)] flex items-center justify-center text-white flex-shrink-0">
+                                <i data-lucide="layout" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Platform Architecture Recommendations</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Technical recommendations for your platform structure.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl md:col-span-2">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white flex-shrink-0">
+                                <i data-lucide="file-text" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Detailed Proposal Within 3-5 Business Days</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Comprehensive proposal with scope, timeline, pricing, and deliverables.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl md:col-span-2 bg-gradient-to-br from-[var(--sage-green)]/10 to-[var(--lavender)]/10 border-2 border-[var(--sage-green)]/20">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white flex-shrink-0">
+                                <i data-lucide="dollar-sign" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">$500 USD Deposit Applied to Final Project Cost</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">If we move forward, your deposit is credited toward the project total.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO THIS IS FOR SECTION -->
+        <section class="py-16 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">
+                            Is Discovery Right for You?
+                        </h2>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">You have a clear business model or revenue plan</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">You need a platform built (community, payment, course, e-commerce)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">Your budget is $5,000 USD minimum</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">You're ready to move forward within 30-60 days</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">You need technical expertise, not just consulting</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">
+                            Discovery Might Not Be Right If
+                        </h2>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">You're looking for a simple website or template customization</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">Your budget is under $5,000 USD</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">You're not ready to start within 60 days</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">You need consulting without implementation</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">You're still exploring options and not ready to commit</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DISCOVERY PROCESS SECTION -->
+        <section class="py-16 px-6 bg-white/40">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-12 text-center">
+                    How Discovery Works
+                </h2>
+                <div class="space-y-6">
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-lg flex-shrink-0">
+                                1
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Pay $500 USD Deposit Below</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Secure your discovery call with a refundable deposit.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4] flex items-center justify-center text-white font-semibold text-lg flex-shrink-0">
+                                2
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Receive Booking Link via Email</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">You'll receive a booking link within 24 hours to schedule your call.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--blush-pink)] to-[#E8A8A8] flex items-center justify-center text-white font-semibold text-lg flex-shrink-0">
+                                3
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Complete Project Questionnaire</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Fill out the project questionnaire before your call to help us prepare.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--lavender)] flex items-center justify-center text-white font-semibold text-lg flex-shrink-0">
+                                4
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Discovery Call (30-45 Minutes)</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Discuss your project scope, timeline, and requirements in detail.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-lg flex-shrink-0">
+                                5
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Receive Detailed Proposal</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Get a comprehensive proposal within 3-5 business days.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl bg-gradient-to-br from-[var(--sage-green)]/10 to-[var(--lavender)]/10 border-2 border-[var(--sage-green)]/20">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-lg flex-shrink-0">
+                                6
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">If We Move Forward</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Your $500 USD deposit is credited toward your final project cost.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--lavender)] to-[var(--blush-pink)] flex items-center justify-center text-white font-semibold text-lg flex-shrink-0">
+                                7
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">If We Don't Move Forward</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">You receive a full refund within 5 business days.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEPOSIT DETAILS SECTION -->
+        <section class="py-16 px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8 text-center">
+                    About the Discovery Deposit
+                </h2>
+                <div class="space-y-6 font-['Cormorant_Garamond'] text-lg text-[var(--warm-gray)] font-light leading-relaxed">
+                    <p>
+                        The $500 USD discovery deposit ensures we're both committed to the process. This filters for serious inquiries and protects both of our time.
+                    </p>
+                    <p>
+                        If we decide to move forward, the $500 USD is credited toward your final project cost. If after discovery we determine the project isn't a fit, you receive a full refund.
+                    </p>
+                    <p>
+                        Refunds are processed within 5 business days. This deposit requirement prevents unqualified inquiries and ensures high-quality discovery calls.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STRIPE PAYMENT SECTION -->
+        <section class="py-16 px-6 bg-white/40">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">
+                        Book Your Discovery Call
+                    </h2>
+                    <p class="text-xl text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] mb-2">
+                        Pay $500 USD deposit to start
+                    </p>
+                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">
+                        Fully refundable if we don't move forward • Applied to project if we do
+                    </p>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="glass-panel p-8 rounded-3xl">
+                    <form id="payment-form">
+                        <!-- Email Input -->
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">
+                                Email Address
+                            </label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required
+                                class="w-full px-4 py-3 rounded-lg border border-[var(--sage-green)]/20 focus:border-[var(--sage-green)] focus:ring-2 focus:ring-[var(--sage-green)]/20 outline-none transition-all bg-white"
+                                placeholder="your@email.com"
+                            />
+                        </div>
+
+                        <!-- Card Element -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">
+                                Card Information
+                            </label>
+                            <div id="card-element" class="p-3 rounded-lg border border-[var(--sage-green)]/20 bg-white">
+                                <!-- Stripe Elements will create form elements here -->
+                            </div>
+                            <div id="card-errors" class="text-sm text-[var(--blush-pink)] mt-2 font-['Inter']" role="alert"></div>
+                        </div>
+
+                        <!-- Security Badge -->
+                        <div class="flex items-center justify-center gap-2 mb-6 text-xs text-[var(--warm-gray)] font-['Inter']">
+                            <i data-lucide="lock" class="w-4 h-4"></i>
+                            <span>Secured by Stripe • SSL Encrypted</span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button 
+                            type="submit" 
+                            id="submit-button"
+                            class="w-full py-4 px-6 text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105 font-medium font-['Inter'] disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            <span id="button-text">Pay $500 USD Deposit</span>
+                            <span id="spinner" class="hidden">Processing...</span>
+                        </button>
+
+                        <p class="text-xs text-center text-[var(--warm-gray)] mt-4 font-['Inter']">
+                            By paying the deposit, you agree to the discovery process. Full refund available if we don't move forward.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Trust Elements -->
+                <div class="mt-8 text-center space-y-4">
+                    <div class="flex items-center justify-center gap-6 text-sm text-[var(--warm-gray)] font-['Inter']">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-[var(--sage-green)]"></i>
+                            <span>Secure Payment</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="refresh-ccw" class="w-4 h-4 text-[var(--sage-green)]"></i>
+                            <span>Full Refund Available</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">
+                        Questions? Email <a href="mailto:ackers.ml@gmail.com" class="text-[var(--sage-green)] hover:underline">ackers.ml@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/30 bg-white/60 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm font-['Inter'] text-[var(--warm-gray)]">
+                © 2025 Michelle Ackers. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-sm font-['Inter'] text-[var(--warm-gray)]">
+                <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[var(--sage-green)] transition-colors">Instagram</a>
+                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+            
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        }
+
+        // Stripe Integration
+        const stripe = Stripe('pk_live_51S9uGWFZARMScNq6U4svqkYPYPqgGHTIv9wGECMz2vqn726egVSOxl3DJyyTPqpbxvSaFPG86HWCBjcLci4FS8e700aTwo2c68');
+        const elements = stripe.elements({
+            appearance: {
+                theme: 'stripe',
+                variables: {
+                    colorPrimary: '#87A96B',
+                    colorBackground: '#ffffff',
+                    colorText: '#3A3A3A',
+                    colorDanger: '#F4C2C2',
+                    fontFamily: 'Inter, system-ui, sans-serif',
+                    spacingUnit: '4px',
+                    borderRadius: '8px',
+                }
+            }
+        });
+
+        const cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        // Handle real-time validation errors from the card Element
+        cardElement.on('change', ({error}) => {
+            const displayError = document.getElementById('card-errors');
+            if (error) {
+                displayError.textContent = error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+
+        // Handle form submission
+        const form = document.getElementById('payment-form');
+        const submitButton = document.getElementById('submit-button');
+        const buttonText = document.getElementById('button-text');
+        const spinner = document.getElementById('spinner');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            // Disable button
+            submitButton.disabled = true;
+            buttonText.classList.add('hidden');
+            spinner.classList.remove('hidden');
+
+            const email = document.getElementById('email').value;
+
+            try {
+                // Create Payment Intent on your server
+                // NOTE: You'll need to create a serverless function or API endpoint
+                // For now, this is a placeholder that shows the structure
+                
+                const response = await fetch('/api/create-payment-intent', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        amount: 50000, // $500.00 in cents
+                        currency: 'usd',
+                        email: email,
+                        description: 'Project Discovery Deposit - Michelle Ackers',
+                    }),
+                });
+
+                const {clientSecret, error: fetchError} = await response.json();
+
+                if (fetchError) {
+                    throw new Error(fetchError.message);
+                }
+
+                // Confirm payment with Stripe
+                const {error: confirmError, paymentIntent} = await stripe.confirmCardPayment(clientSecret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: {
+                            email: email,
+                        },
+                    },
+                });
+
+                if (confirmError) {
+                    throw confirmError;
+                }
+
+                // Payment succeeded
+                if (paymentIntent.status === 'succeeded') {
+                    // Redirect to thank you page
+                    window.location.href = `/discovery-thank-you.html?payment_intent=${paymentIntent.id}`;
+                }
+
+            } catch (error) {
+                // Show error to user
+                const displayError = document.getElementById('card-errors');
+                displayError.textContent = error.message || 'An error occurred. Please try again.';
+                
+                // Re-enable button
+                submitButton.disabled = false;
+                buttonText.classList.remove('hidden');
+                spinner.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>
+

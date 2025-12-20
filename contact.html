@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Book Discovery Call | Michelle Ackers</title>
+    <meta name="description" content="Book discovery call for platform builds starting at $2,000 USD. For qualified projects only.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-lime: #bef264;
+            --color-bg: #050505;
+            --sage-green: #87A96B;
+            --lavender: #B8A9D9;
+            --blush-pink: #F4C2C2;
+            --warm-cream: #FAF7F2;
+            --soft-beige: #F5F1E8;
+            --warm-gray: #6B6B6B;
+            --deep-sage: #6B8E5A;
+        }
+        
+        body {
+            background-color: var(--color-bg);
+            color: #f4f4f5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #bef264; }
+        
+        .bg-noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+        }
+
+        ::selection { background-color: #bef264; color: #000; }
+        
+        .glass-panel {
+            background: rgba(18, 18, 18, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+    </style>
+</head>
+<body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen text-lg">
+
+    <div class="bg-noise"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-base font-['Space_Grotesk'] font-normal tracking-tight text-white flex items-center gap-2 group">
+                <div class="w-8 h-8 rounded-full bg-[#bef264] text-black flex items-center justify-center font-semibold text-xs">
+                    MA
+                </div>
+                <span class="group-hover:text-[#bef264] transition-colors">Ackers.</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest text-zinc-500 uppercase font-['Inter']">
+                <a href="services.html" class="nav-link hover:text-white transition-colors duration-200">Services</a>
+                <a href="portfolio.html" class="nav-link hover:text-white transition-colors duration-200">Portfolio</a>
+                <a href="about.html" class="nav-link hover:text-white transition-colors duration-200">About</a>
+            </div>
+
+            <a href="contact.html" class="hidden md:inline-flex items-center justify-center px-5 py-2 text-xs font-semibold uppercase tracking-wider text-black bg-[#bef264] rounded hover:bg-white transition-colors">
+                Book Discovery
+            </a>
+            
+            <button id="mobile-menu-button" class="md:hidden text-[var(--warm-gray)] hover:text-[var(--sage-green)]">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 stroke-[1.5]"></i>
+                <i data-lucide="x" id="close-icon" class="w-6 h-6 stroke-[1.5] hidden"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg">
+            <div class="flex flex-col px-6 py-6 gap-4">
+                <a href="services.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Services</a>
+                <a href="portfolio.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Portfolio</a>
+                <a href="about.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">About</a>
+                <a href="contact.html" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all mt-2">
+                    Book Discovery
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow pt-20">
+        
+        <!-- CONTACT PAGE -->
+        <section class="min-h-[calc(100vh-80px)] flex items-center justify-center px-6 py-24">
+            <div class="max-w-5xl mx-auto w-full">
+                <div class="glass-panel p-12 md:p-24 rounded-2xl border border-white/5 relative overflow-hidden">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#bef264]/5 blur-[100px] rounded-full pointer-events-none"></div>
+        
+                    <div class="relative z-10">
+                        <span class="text-[#bef264] font-['JetBrains_Mono'] text-xs uppercase tracking-wider mb-6 block">Discovery Call</span>
+                        <h2 class="text-4xl md:text-7xl font-['Space_Grotesk'] font-normal text-white tracking-tighter mb-8 leading-none">
+                            Book Discovery Call
+                        </h2>
+                        <p class="text-zinc-400 text-xl mb-12 max-w-2xl font-light">
+                            For platform builds starting at $2,000 USD. Discovery calls for qualified projects only.
+                        </p>
+                    </div>
+
+                    <!-- Qualification Requirements -->
+                    <div class="relative z-10 mb-12">
+                        <h3 class="text-xl font-medium text-white mb-6 font-['Space_Grotesk']">Qualification Requirements</h3>
+                        <div class="space-y-4 text-zinc-400 font-light">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                <span>Projects start at $2,000 USD</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                <span>Must have product concept or be ready to define it</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                <span>Must be founder or decision-maker with budget authority</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                <span>Discovery calls typically 30-45 minutes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- What to Prepare -->
+                    <div class="relative z-10 mb-12 border-t border-zinc-800 pt-12">
+                        <h3 class="text-xl font-medium text-white mb-6 font-['Space_Grotesk']">What to Prepare</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-zinc-400 font-light text-sm">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="circle" class="w-4 h-4 text-zinc-600 mt-0.5 flex-shrink-0"></i>
+                                <span>Business model: what product or platform you need built</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="circle" class="w-4 h-4 text-zinc-600 mt-0.5 flex-shrink-0"></i>
+                                <span>Target users: who will use this platform</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="circle" class="w-4 h-4 text-zinc-600 mt-0.5 flex-shrink-0"></i>
+                                <span>Revenue model: how this generates income</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="circle" class="w-4 h-4 text-zinc-600 mt-0.5 flex-shrink-0"></i>
+                                <span>Desired features: what functionality is required</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="circle" class="w-4 h-4 text-zinc-600 mt-0.5 flex-shrink-0"></i>
+                                <span>Timeline: when you need to launch</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="circle" class="w-4 h-4 text-zinc-600 mt-0.5 flex-shrink-0"></i>
+                                <span>Budget range: minimum $2,000 USD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- After Discovery -->
+                    <div class="relative z-10 mb-12 border-t border-zinc-800 pt-12">
+                        <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">After Discovery</h3>
+                        <div class="space-y-3 text-zinc-400 font-light text-sm">
+                            <p>• Receive technical proposal within 3-5 business days</p>
+                            <p>• Proposal includes scope, timeline, pricing, deliverables, milestones</p>
+                            <p>• 50% deposit to begin development</p>
+                            <p>• Remaining 50% on launch</p>
+                        </div>
+                    </div>
+                        
+                    <!-- CTA Buttons -->
+                    <div class="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                        <a href="mailto:ackers.ml@gmail.com?subject=Discovery Call Request&body=Hi Michelle,%0D%0A%0D%0AI'm interested in booking a discovery call for a platform build. Project details:%0D%0A%0D%0A[Please include: business model, target users, revenue model, desired features, timeline, budget]" class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-5 text-sm font-bold text-black bg-[#bef264] rounded hover:bg-white transition-all group">
+                            Book Discovery Call
+                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <button onclick="navigator.clipboard.writeText('ackers.ml@gmail.com'); alert('Email copied to clipboard!');" class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-5 text-sm font-medium text-zinc-300 border border-zinc-800 rounded hover:border-white hover:text-white transition-all bg-black/50">
+                            Copy Email
+                        </button>
+                    </div>
+
+                    <!-- Email for Other Inquiries -->
+                    <div class="relative z-10 text-center border-t border-zinc-800 pt-12">
+                        <p class="text-zinc-400 mb-4 font-light">Email for other inquiries</p>
+                        <a href="mailto:ackers.ml@gmail.com" class="text-[#bef264] font-['JetBrains_Mono'] hover:underline">ackers.ml@gmail.com</a>
+                        <p class="text-zinc-500 text-sm mt-4 font-['JetBrains_Mono']">Response time: 24-48 hours for qualified projects</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-900 bg-black py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-xs font-['JetBrains_Mono'] text-zinc-600">
+                © 2025 Michelle Ackers. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-xs font-['JetBrains_Mono'] text-zinc-600">
+                <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[#bef264] transition-colors">Instagram</a>
+                <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

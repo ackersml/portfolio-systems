@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process - Michelle Ackers | Operations Architect</title>
+    <meta name="description" content="Operations Architect and Systems Designer. Designing intelligent systems for scalable outcomes.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-lime: #bef264;
+            --color-bg: #050505;
+        }
+        
+        body {
+            background-color: var(--color-bg);
+            color: #f4f4f5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #bef264; }
+        
+        /* Noise Texture */
+        .bg-noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+        }
+
+        ::selection { background-color: #bef264; color: #000; }
+        
+        .glass-panel {
+            background: rgba(18, 18, 18, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        .animate-slide-up { animation: slideUp 0.6s ease-out forwards; }
+    </style>
+</head>
+<body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen text-lg">
+
+    <!-- Noise Texture -->
+    <div class="bg-noise"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-base font-['Space_Grotesk'] font-normal tracking-tight text-white flex items-center gap-2 group">
+                <div class="w-8 h-8 rounded-full bg-[#bef264] text-black flex items-center justify-center font-semibold text-xs">
+                    MA
+                </div>
+                <span class="group-hover:text-[#bef264] transition-colors">Ackers.</span>
+            </a>
+            
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-widest text-zinc-500 uppercase font-['Inter']">
+                <a href="about.html" class="nav-link hover:text-white transition-colors duration-200">About</a>
+                <a href="services.html" class="nav-link hover:text-white transition-colors duration-200">Services</a>
+                <a href="process.html" class="nav-link text-white transition-colors duration-200">Process</a>
+                <a href="tech.html" class="nav-link hover:text-white transition-colors duration-200">Tech</a>
+            </div>
+
+            <a href="contact.html" class="hidden md:inline-flex items-center justify-center px-5 py-2 text-xs font-semibold uppercase tracking-wider text-black bg-[#bef264] rounded hover:bg-white transition-colors">
+                Book Discovery
+            </a>
+            
+            <button class="md:hidden text-zinc-400 hover:text-white">
+                <i data-lucide="menu" class="w-6 h-6 stroke-[1.5]"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="relative z-10 flex-grow pt-20">
+        
+        <!-- PROCESS PAGE -->
+        <section class="py-24 px-6 min-h-screen">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 border-b border-zinc-800 pb-8">
+                    <span class="text-[#bef264] font-['JetBrains_Mono'] text-xs uppercase tracking-wider mb-4 block">Methodology</span>
+                    <h1 class="text-5xl md:text-6xl font-['Space_Grotesk'] font-normal text-white tracking-tighter">How We Build</h1>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Step 1 -->
+                    <div class="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-10 border border-zinc-800 rounded-xl hover:bg-zinc-900/20 transition-colors">
+                        <div class="hidden md:flex flex-col items-center justify-center md:col-span-2 border-r border-zinc-800">
+                            <span class="text-5xl font-['Space_Grotesk'] font-semibold text-zinc-800 group-hover:text-[#bef264] transition-colors">01</span>
+                        </div>
+                        <div class="md:col-span-10">
+                            <h3 class="text-2xl font-semibold text-white mb-3 tracking-tight">Discovery &amp; Blueprinting</h3>
+                            <p class="text-zinc-400 text-base mb-6 font-light leading-relaxed">We start by deeply understanding your business model, pain points, and goals. The output is a comprehensive technical and operational blueprint.</p>
+                            <div class="flex gap-3">
+                                <span class="px-2 py-1 text-[10px] uppercase font-bold bg-zinc-800 text-zinc-300 rounded font-['JetBrains_Mono']">Audits</span>
+                                <span class="px-2 py-1 text-[10px] uppercase font-bold bg-zinc-800 text-zinc-300 rounded font-['JetBrains_Mono']">Scope</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-10 border border-zinc-800 rounded-xl hover:bg-zinc-900/20 transition-colors">
+                        <div class="hidden md:flex flex-col items-center justify-center md:col-span-2 border-r border-zinc-800">
+                            <span class="text-5xl font-['Space_Grotesk'] font-semibold text-zinc-800 group-hover:text-[#bef264] transition-colors">02</span>
+                        </div>
+                        <div class="md:col-span-10">
+                            <h3 class="text-2xl font-semibold text-white mb-3 tracking-tight">Development &amp; Integration</h3>
+                            <p class="text-zinc-400 text-base mb-6 font-light leading-relaxed">I build the systems defined in the blueprint. This is an iterative process where we connect tools, write code, and configure automations.</p>
+                            <div class="flex gap-3">
+                                <span class="px-2 py-1 text-[10px] uppercase font-bold bg-zinc-800 text-zinc-300 rounded font-['JetBrains_Mono']">Sprint 1-4</span>
+                                <span class="px-2 py-1 text-[10px] uppercase font-bold bg-zinc-800 text-zinc-300 rounded font-['JetBrains_Mono']">Testing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-10 border border-zinc-800 rounded-xl hover:bg-zinc-900/20 transition-colors">
+                        <div class="hidden md:flex flex-col items-center justify-center md:col-span-2 border-r border-zinc-800">
+                            <span class="text-5xl font-['Space_Grotesk'] font-semibold text-zinc-800 group-hover:text-[#bef264] transition-colors">03</span>
+                        </div>
+                        <div class="md:col-span-10">
+                            <h3 class="text-2xl font-semibold text-white mb-3 tracking-tight">Handover &amp; Optimization</h3>
+                            <p class="text-zinc-400 text-base mb-6 font-light leading-relaxed">Systems are only good if they are used. I provide training, documentation (Runbooks), and a period of monitoring to ensure stability.</p>
+                            <div class="flex gap-3">
+                                <span class="px-2 py-1 text-[10px] uppercase font-bold bg-zinc-800 text-zinc-300 rounded font-['JetBrains_Mono']">Runbooks</span>
+                                <span class="px-2 py-1 text-[10px] uppercase font-bold bg-zinc-800 text-zinc-300 rounded font-['JetBrains_Mono']">Training</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-900 bg-black py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-xs font-['JetBrains_Mono'] text-zinc-600">
+                © 2024 Michelle Ackers. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-xs font-['JetBrains_Mono'] text-zinc-600">
+                <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Systems Operational</span>
+                <span>London, UK</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>
+
+
+

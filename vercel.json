@@ -1,0 +1,53 @@
+{
+  "version": 2,
+  "name": "michelle-ackers",
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/services",
+      "dest": "/services.html"
+    },
+    {
+      "src": "/portfolio",
+      "dest": "/portfolio.html"
+    },
+    {
+      "src": "/about",
+      "dest": "/about.html"
+    },
+    {
+      "src": "/contact",
+      "dest": "/contact.html"
+    },
+    {
+      "src": "/software",
+      "dest": "/software.html"
+    },
+    {
+      "src": "/discovery",
+      "dest": "/discovery.html"
+    },
+    {
+      "src": "/discovery-thank-you",
+      "dest": "/discovery-thank-you.html"
+    },
+    {
+      "src": "/ai-consultation",
+      "dest": "/ai-consultation.html"
+    },
+    {
+      "src": "/ai-consultation-thank-you",
+      "dest": "/ai-consultation-thank-you.html"
+    }
+  ]
+}
+

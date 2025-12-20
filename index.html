@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michelle Ackers | Platform Builder for Mission-Driven Founders</title>
+    <meta name="description" content="Platform builder for founders exiting 9-to-5. Service business websites, community platforms, payment systems, course infrastructure, complete product builds. Projects start at $2,000 USD.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts - Feminine, Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sage-green: #87A96B;
+            --lavender: #B8A9D9;
+            --blush-pink: #F4C2C2;
+            --warm-cream: #FAF7F2;
+            --soft-beige: #F5F1E8;
+            --warm-gray: #6B6B6B;
+            --deep-sage: #6B8E5A;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #FAF7F2 0%, #F5F1E8 100%);
+            color: #3A3A3A;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F5F1E8; }
+        ::-webkit-scrollbar-thumb { background: var(--sage-green); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--deep-sage); }
+        
+        /* Organic Background Pattern */
+        .bg-organic {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--sage-green) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--lavender) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--blush-pink) 0%, transparent 50%);
+        }
+
+        ::selection { background-color: var(--sage-green); color: white; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(107, 142, 90, 0.1);
+        }
+
+        .organic-shape {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Organic Background -->
+    <div class="bg-organic"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/30 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-['Playfair_Display'] font-medium text-[#3A3A3A] flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-sm shadow-lg group-hover:scale-110 transition-transform">
+                    MA
+                </div>
+                <span class="group-hover:text-[var(--sage-green)] transition-colors">Michelle Ackers</span>
+            </a>
+            
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--warm-gray)] font-['Inter']">
+                <a href="services.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Services</a>
+                <a href="portfolio.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Portfolio</a>
+                <a href="about.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">About</a>
+            </div>
+
+            <a href="discovery.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                Book Discovery
+            </a>
+            
+            <button id="mobile-menu-button" class="md:hidden text-[var(--warm-gray)] hover:text-[var(--sage-green)]">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 stroke-[1.5]"></i>
+                <i data-lucide="x" id="close-icon" class="w-6 h-6 stroke-[1.5] hidden"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg">
+            <div class="flex flex-col px-6 py-6 gap-4">
+                <a href="services.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Services</a>
+                <a href="portfolio.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Portfolio</a>
+                <a href="about.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">About</a>
+                <a href="contact.html" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all mt-2">
+                    Book Discovery
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="relative z-10 flex-grow pt-20">
+        
+        <!-- HERO SECTION -->
+        <section class="flex items-center justify-center px-6 py-20 min-h-[calc(100vh-80px)] relative overflow-hidden">
+            <!-- Decorative organic shapes -->
+            <div class="absolute top-20 right-10 w-64 h-64 bg-gradient-to-br from-[var(--lavender)]/20 to-[var(--blush-pink)]/20 organic-shape animate-float"></div>
+            <div class="absolute bottom-20 left-10 w-48 h-48 bg-gradient-to-br from-[var(--sage-green)]/20 to-[var(--lavender)]/20 organic-shape animate-float" style="animation-delay: 2s;"></div>
+            
+            <div class="max-w-6xl mx-auto w-full relative z-10">
+                <div class="animate-slide-up">
+                    <h1 class="text-6xl md:text-8xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8 leading-[1.1]">
+                        Building platforms <br>
+                        <span class="text-[var(--sage-green)]">with soul & purpose</span>
+                    </h1>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                        <div class="md:col-span-7">
+                            <p class="text-xl md:text-2xl text-[var(--warm-gray)] font-light leading-relaxed mb-10 font-['Cormorant_Garamond']">
+                                I weave technical mastery with intuitive design to create platforms that honor your mission. Service business websites, community platforms, payment infrastructure, e-commerce stores, course systems, and custom product development. Complete product builds from discovery to deployment that align with your vision and support your growth.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                                <a href="discovery.html" class="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105">
+                                    Book Discovery Call
+                                </a>
+                                <a href="portfolio.html" class="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-[var(--sage-green)] border-2 border-[var(--sage-green)] rounded-full hover:bg-[var(--sage-green)]/10 transition-all">
+                                    View Portfolio
+                                </a>
+                            </div>
+                            <p class="text-sm text-[var(--warm-gray)] font-['Inter'] italic">For founders ready to invest in complete product development. Not for template customization or website builds.</p>
+                        </div>
+                        <div class="md:col-span-5 hidden md:block">
+                            <div class="glass-panel p-8 rounded-3xl border-l-4 border-l-[var(--sage-green)] shadow-xl">
+                                <p class="text-lg font-['Cormorant_Garamond'] text-[#3A3A3A] mb-6 italic leading-relaxed">"I build products that honor your mission. Technical infrastructure woven with intention, creating platforms that become extensions of your purpose."</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="h-px w-12 bg-[var(--sage-green)]/30"></div>
+                                    <span class="text-xs text-[var(--warm-gray)] uppercase tracking-widest font-['Inter']">Michelle Ackers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT I BUILD SECTION -->
+        <section class="py-24 px-6 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 text-center">
+                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Capabilities</span>
+                    <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">What I Create</h2>
+                    <p class="text-[var(--warm-gray)] text-lg max-w-3xl mx-auto font-light font-['Cormorant_Garamond']">Complete platforms and products from discovery to deployment. Built with intention, designed for growth.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Community Platforms -->
+                    <div class="glass-panel p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
+                            <i data-lucide="users" class="w-7 h-7 stroke-[1.5]"></i>
+                        </div>
+                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Community Platforms</h3>
+                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
+                            Member management, content delivery, subscription integration. White-label community infrastructure that nurtures connection and growth.
+                        </p>
+                        <p class="text-sm text-[var(--sage-green)] font-['Inter'] font-medium mb-4">Starting at $8,000 USD</p>
+                        <a href="services.html#community" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1">
+                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service Business Websites -->
+                    <div class="glass-panel p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
+                            <i data-lucide="globe" class="w-7 h-7 stroke-[1.5]"></i>
+                        </div>
+                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Service Business Websites</h3>
+                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
+                            Professional multi-page websites for coaches, trainers, consultants, therapists. Services pages, booking integration, SEO optimized.
+                        </p>
+                        <p class="text-sm text-[var(--sage-green)] font-['Inter'] font-medium mb-4">Starting at $2,000 USD</p>
+                        <a href="services.html#service-websites" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1">
+                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Payment Infrastructure -->
+                    <div class="glass-panel p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
+                            <i data-lucide="credit-card" class="w-7 h-7 stroke-[1.5]"></i>
+                        </div>
+                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Payment Infrastructure</h3>
+                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
+                            Stripe integration, subscription billing, invoice generation. Revenue infrastructure that flows seamlessly and supports your growth.
+                        </p>
+                        <p class="text-sm text-[var(--sage-green)] font-['Inter'] font-medium mb-4">Starting at $5,000 USD</p>
+                        <a href="services.html#payment" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1">
+                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- E-commerce Platforms -->
+                    <div class="glass-panel p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--blush-pink)] to-[#E8A8A8] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
+                            <i data-lucide="shopping-cart" class="w-7 h-7 stroke-[1.5]"></i>
+                        </div>
+                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">E-commerce Platforms</h3>
+                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
+                            Product management, checkout systems, digital downloads. Complete stores built with care and attention to your brand.
+                        </p>
+                        <p class="text-sm text-[var(--sage-green)] font-['Inter'] font-medium mb-4">Starting at $5,000 USD</p>
+                        <a href="services.html#ecommerce" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1">
+                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Course Platforms -->
+                    <div class="glass-panel p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--lavender)] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
+                            <i data-lucide="book-open" class="w-7 h-7 stroke-[1.5]"></i>
+                        </div>
+                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Course Platforms</h3>
+                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
+                            Learning management systems, student tracking, progress monitoring. Platforms that honor the learning journey.
+                        </p>
+                        <p class="text-sm text-[var(--sage-green)] font-['Inter'] font-medium mb-4">Starting at $8,000 USD</p>
+                        <a href="services.html#course" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1">
+                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Custom Products -->
+                    <div class="glass-panel p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[var(--blush-pink)] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
+                            <i data-lucide="sparkles" class="w-7 h-7 stroke-[1.5]"></i>
+                        </div>
+                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Custom Products</h3>
+                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
+                            SaaS MVPs, booking systems, client portals. Technical products tailored to your unique vision and needs.
+                        </p>
+                        <p class="text-sm text-[var(--sage-green)] font-['Inter'] font-medium mb-4">Starting at $10,000 USD</p>
+                        <a href="services.html#custom" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1">
+                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Software -->
+                    <div class="glass-panel p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group opacity-75">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--warm-gray)]/30 to-[var(--warm-gray)]/50 flex items-center justify-center mb-6 text-[var(--warm-gray)] shadow-lg">
+                            <i data-lucide="cpu" class="w-7 h-7 stroke-[1.5]"></i>
+                        </div>
+                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Software</h3>
+                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
+                            Custom software solutions built for specific use cases. Details coming soon.
+                        </p>
+                        <p class="text-sm text-[var(--warm-gray)] font-['Inter'] font-medium mb-4">Coming soon</p>
+                        <a href="software.html" class="text-[var(--warm-gray)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1">
+                            View section <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOT READY FOR FULL BUILD SECTION -->
+        <section class="py-24 px-6 relative bg-white/40">
+            <div class="max-w-7xl mx-auto">
+                <div class="max-w-4xl mx-auto text-center mb-12">
+                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Getting Started</span>
+                    <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">
+                        Not Ready for a Full Platform Build?
+                    </h2>
+                    <p class="text-xl text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] leading-relaxed mb-8">
+                        Start with an AI Integration Consultation to identify automation opportunities in your business. Get specific recommendations and an implementation roadmap in just 1-2 hours.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-3xl max-w-3xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h3 class="text-lg font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">What</h3>
+                            <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Focused consultation to identify AI automation opportunities</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">Who</h3>
+                            <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Business owners with manual workflows ready to explore AI</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">Investment</h3>
+                            <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">$250/hour (most clients need 1-2 sessions)</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">Outcome</h3>
+                            <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Actionable roadmap with tool recommendations and implementation priorities</p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="ai-consultation.html" class="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105">
+                            Book AI Consultation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO THIS IS FOR SECTION -->
+        <section class="py-24 px-6 relative bg-white/40">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div>
+                        <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">For You</span>
+                        <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8">Who This Is For</h2>
+                        <ul class="space-y-4 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="heart" class="w-5 h-5 text-[var(--blush-pink)] mt-1 flex-shrink-0"></i>
+                                <span>Founders ready to exit 9-to-5 and launch mission-driven business</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="heart" class="w-5 h-5 text-[var(--blush-pink)] mt-1 flex-shrink-0"></i>
+                                <span>Coaches and educators building membership or course businesses</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="heart" class="w-5 h-5 text-[var(--blush-pink)] mt-1 flex-shrink-0"></i>
+                                <span>Wellness practitioners creating online programs</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="heart" class="w-5 h-5 text-[var(--blush-pink)] mt-1 flex-shrink-0"></i>
+                                <span>Consultants productizing their services</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="heart" class="w-5 h-5 text-[var(--blush-pink)] mt-1 flex-shrink-0"></i>
+                                <span>Anyone needing technical product built to generate revenue</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="text-[var(--warm-gray)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Not For</span>
+                        <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8">Who This Is Not For</h2>
+                        <ul class="space-y-4 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x" class="w-5 h-5 text-[var(--warm-gray)]/50 mt-1 flex-shrink-0"></i>
+                                <span>Businesses needing website builds or brochure sites</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x" class="w-5 h-5 text-[var(--warm-gray)]/50 mt-1 flex-shrink-0"></i>
+                                <span>People wanting template customization</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x" class="w-5 h-5 text-[var(--warm-gray)]/50 mt-1 flex-shrink-0"></i>
+                                <span>Businesses optimizing existing operations</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x" class="w-5 h-5 text-[var(--warm-gray)]/50 mt-1 flex-shrink-0"></i>
+                                <span>Projects under $2,000 USD budget</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x" class="w-5 h-5 text-[var(--warm-gray)]/50 mt-1 flex-shrink-0"></i>
+                                <span>People wanting strategy consulting, not product building</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTS SECTION -->
+        <section class="py-24 px-6 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 text-center">
+                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Outcomes</span>
+                    <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">Results</h2>
+                    <p class="text-[var(--warm-gray)] text-lg max-w-3xl mx-auto font-light font-['Cormorant_Garamond']">Measurable outcomes from platform builds.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-panel p-8 rounded-3xl text-center">
+                        <div class="text-5xl font-['Playfair_Display'] font-semibold text-[var(--sage-green)] mb-3">500+</div>
+                        <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Inter']">Members</h3>
+                        <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Community platform supporting 500+ members, generating $15k monthly recurring revenue</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-3xl text-center">
+                        <div class="text-5xl font-['Playfair_Display'] font-semibold text-[var(--lavender)] mb-3">$50k+</div>
+                        <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Inter']">Monthly Revenue</h3>
+                        <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Payment infrastructure processing $50k+ monthly revenue with automated billing</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-3xl text-center">
+                        <div class="text-5xl font-['Playfair_Display'] font-semibold text-[var(--blush-pink)] mb-3">1000+</div>
+                        <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Inter']">Students</h3>
+                        <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Course platform delivering content to 1000+ students with progress tracking</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS SECTION -->
+        <section class="py-24 px-6 relative bg-white/40">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 text-center">
+                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Methodology</span>
+                    <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">Process</h2>
+                    <p class="text-[var(--warm-gray)] text-lg max-w-3xl mx-auto font-light font-['Cormorant_Garamond']">Four phases from discovery to launch, woven with intention.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-panel p-8 rounded-3xl text-center">
+                        <div class="text-4xl font-['Playfair_Display'] font-semibold text-[var(--sage-green)] mb-4">01</div>
+                        <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Discovery</h3>
+                        <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Technical requirements, business model validation, scope definition</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-3xl text-center">
+                        <div class="text-4xl font-['Playfair_Display'] font-semibold text-[var(--lavender)] mb-4">02</div>
+                        <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Design</h3>
+                        <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Platform architecture, feature mapping, integration planning</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-3xl text-center">
+                        <div class="text-4xl font-['Playfair_Display'] font-semibold text-[var(--blush-pink)] mb-4">03</div>
+                        <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Build</h3>
+                        <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Development, testing, iteration</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-3xl text-center">
+                        <div class="text-4xl font-['Playfair_Display'] font-semibold text-[var(--sage-green)] mb-4">04</div>
+                        <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Launch</h3>
+                        <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Deployment, training, handoff</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="py-24 px-6 relative">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">Ready to Build Your Platform?</h2>
+                <p class="text-[var(--warm-gray)] text-lg mb-8 font-light font-['Cormorant_Garamond'] max-w-2xl mx-auto">Book a discovery call for projects starting at $2,000 USD. For founders ready to invest in complete product development.</p>
+                <a href="discovery.html" class="inline-flex items-center justify-center px-10 py-5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105">
+                    Book Discovery Call
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/30 bg-white/60 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm font-['Inter'] text-[var(--warm-gray)]">
+                © 2025 Michelle Ackers. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-sm font-['Inter'] text-[var(--warm-gray)]">
+                <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[var(--sage-green)] transition-colors">Instagram</a>
+                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

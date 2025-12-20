@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Platform Builder | Michelle Ackers</title>
+    <meta name="description" content="Platform builder specializing in complete product development for mission-driven founders. High-IQ autistic systems thinker.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts - Feminine, Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sage-green: #87A96B;
+            --lavender: #B8A9D9;
+            --blush-pink: #F4C2C2;
+            --warm-cream: #FAF7F2;
+            --soft-beige: #F5F1E8;
+            --warm-gray: #6B6B6B;
+            --deep-sage: #6B8E5A;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #FAF7F2 0%, #F5F1E8 100%);
+            color: #3A3A3A;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F5F1E8; }
+        ::-webkit-scrollbar-thumb { background: var(--sage-green); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--deep-sage); }
+        
+        .bg-organic {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--sage-green) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--lavender) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--blush-pink) 0%, transparent 50%);
+        }
+
+        ::selection { background-color: var(--sage-green); color: white; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(107, 142, 90, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen">
+
+    <div class="bg-organic"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/30 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-['Playfair_Display'] font-medium text-[#3A3A3A] flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-sm shadow-lg group-hover:scale-110 transition-transform">
+                    MA
+                </div>
+                <span class="group-hover:text-[var(--sage-green)] transition-colors">Michelle Ackers</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--warm-gray)] font-['Inter']">
+                <a href="services.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Services</a>
+                <a href="portfolio.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Portfolio</a>
+                <a href="about.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">About</a>
+            </div>
+
+            <a href="discovery.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                Book Discovery
+            </a>
+            
+            <button id="mobile-menu-button" class="md:hidden text-[var(--warm-gray)] hover:text-[var(--sage-green)]">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 stroke-[1.5]"></i>
+                <i data-lucide="x" id="close-icon" class="w-6 h-6 stroke-[1.5] hidden"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg">
+            <div class="flex flex-col px-6 py-6 gap-4">
+                <a href="services.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Services</a>
+                <a href="portfolio.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Portfolio</a>
+                <a href="about.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">About</a>
+                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all mt-2">
+                    Book Discovery
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow pt-20">
+        
+        <!-- ABOUT PAGE -->
+        <section class="py-24 px-6 min-h-screen">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 border-b border-[var(--sage-green)]/20 pb-8">
+                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Background</span>
+                    <h1 class="text-5xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight">About</h1>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
+                    <div class="lg:col-span-4">
+                        <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Platform Builder for <br><span class="text-[var(--sage-green)]">Mission-Driven Founders</span></h2>
+                    </div>
+                    <div class="lg:col-span-8 space-y-6 text-[var(--warm-gray)] leading-relaxed font-light font-['Cormorant_Garamond'] text-lg">
+                        <p>
+                            Platform builder specializing in complete product development for mission-driven founders. High-IQ autistic systems thinker with pattern recognition and technical problem-solving focus.
+                        </p>
+                        <p>
+                            I build complete platforms and products, not websites. Not consulting. Not templates. I develop technical infrastructure that enables founders to exit 9-to-5.
+                        </p>
+                        <p>
+                            Most developers build features. I build complete products. Most agencies customize templates. I build from zero. Focus on revenue-generating products, not brochure sites. Technical infrastructure that IS the business, not supporting existing business.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Specialization -->
+                <div class="mb-24 border-t border-[var(--sage-green)]/20 pt-16">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                        <div class="lg:col-span-4">
+                            <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Specialization</span>
+                            <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight">What I Build</h2>
+                        </div>
+                        <div class="lg:col-span-8">
+                            <ul class="space-y-4 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>Service business websites for coaches, trainers, consultants, therapists</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>Community platforms with member management and subscription integration</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>Payment infrastructure for recurring revenue businesses</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>Course systems with learning management and student tracking</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>E-commerce stores for digital and physical products</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>Custom products: SaaS MVPs, booking systems, client portals</span>
+                                </li>
+                            </ul>
+                            <p class="mt-6 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">Health, wellness, education, coaching industries. Builds revenue-generating platforms, not optimization of existing businesses.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Who This Is For -->
+                <div class="mb-24 border-t border-[var(--sage-green)]/20 pt-16">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                        <div>
+                            <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Target</span>
+                            <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">Who This Is For</h2>
+                            <ul class="space-y-3 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>Founders ready to exit 9-to-5 and launch mission-driven business</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>Coaches and educators building membership or course platforms</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>Wellness practitioners creating online programs</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>Anyone needing complete technical product built to generate revenue</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                    <span>Budget $2,000+ USD for platform development</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="text-[var(--warm-gray)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Not For</span>
+                            <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">Who This Is Not For</h2>
+                            <ul class="space-y-3 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
+                                    <span>Businesses wanting brochure websites or portfolios</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
+                                    <span>People looking for template customization</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
+                                    <span>Businesses needing process optimization, not new products</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
+                                    <span>Projects under $2,000 USD</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
+                                    <span>People wanting strategy consulting, not product building</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Expertise -->
+                <div class="mb-24 border-t border-[var(--sage-green)]/20 pt-16">
+                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Technical Expertise</span>
+                    <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8">Tools & Platforms</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h4 class="text-sm font-semibold text-[#2A2A2A] mb-2 font-['Inter'] uppercase">Platforms</h4>
+                            <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Stripe, Shopify, WordPress, Next.js, React</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h4 class="text-sm font-semibold text-[#2A2A2A] mb-2 font-['Inter'] uppercase">Languages</h4>
+                            <p class="text-sm text-[var(--warm-gray)] font-['Inter']">JavaScript, TypeScript, PHP, Python</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h4 class="text-sm font-semibold text-[#2A2A2A] mb-2 font-['Inter'] uppercase">Frameworks</h4>
+                            <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Next.js, React, Node.js, Tailwind</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h4 class="text-sm font-semibold text-[#2A2A2A] mb-2 font-['Inter'] uppercase">Tools</h4>
+                            <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Cursor IDE, PostgreSQL, AWS, Git, API integrations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="border-t border-[var(--sage-green)]/20 pt-16 text-center">
+                    <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Ready to Build Your Platform?</h2>
+                    <p class="text-[var(--warm-gray)] mb-8 font-light font-['Cormorant_Garamond'] text-lg max-w-2xl mx-auto">Book a discovery call if you need technical product built, starting at $2,000 USD.</p>
+                    <a href="discovery.html" class="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105">
+                        Book Discovery Call
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/30 bg-white/60 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm font-['Inter'] text-[var(--warm-gray)]">
+                © 2025 Michelle Ackers. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-sm font-['Inter'] text-[var(--warm-gray)]">
+                <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[var(--sage-green)] transition-colors">Instagram</a>
+                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+            
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discovery Deposit Received | Michelle Ackers</title>
+    <meta name="description" content="Thank you for your discovery deposit. Check your email for next steps.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sage-green: #87A96B;
+            --lavender: #B8A9D9;
+            --blush-pink: #F4C2C2;
+            --warm-cream: #FAF7F2;
+            --soft-beige: #F5F1E8;
+            --warm-gray: #6B6B6B;
+            --deep-sage: #6B8E5A;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #FAF7F2 0%, #F5F1E8 100%);
+            color: #3A3A3A;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F5F1E8; }
+        ::-webkit-scrollbar-thumb { background: var(--sage-green); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--deep-sage); }
+        
+        .bg-organic {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--sage-green) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--lavender) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--blush-pink) 0%, transparent 50%);
+        }
+
+        ::selection { background-color: var(--sage-green); color: white; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(107, 142, 90, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen">
+
+    <div class="bg-organic"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/30 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-['Playfair_Display'] font-medium text-[#3A3A3A] flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-sm shadow-lg group-hover:scale-110 transition-transform">
+                    MA
+                </div>
+                <span class="group-hover:text-[var(--sage-green)] transition-colors">Michelle Ackers</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--warm-gray)] font-['Inter']">
+                <a href="services.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Services</a>
+                <a href="portfolio.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Portfolio</a>
+                <a href="about.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">About</a>
+            </div>
+
+            <a href="contact.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                Book Discovery
+            </a>
+            
+            <button id="mobile-menu-button" class="md:hidden text-[var(--warm-gray)] hover:text-[var(--sage-green)]">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 stroke-[1.5]"></i>
+                <i data-lucide="x" id="close-icon" class="w-6 h-6 stroke-[1.5] hidden"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg">
+            <div class="flex flex-col px-6 py-6 gap-4">
+                <a href="services.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Services</a>
+                <a href="portfolio.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Portfolio</a>
+                <a href="about.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">About</a>
+                <a href="contact.html" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all mt-2">
+                    Book Discovery
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow pt-20">
+        
+        <!-- THANK YOU SECTION -->
+        <section class="min-h-[calc(100vh-80px)] flex items-center justify-center px-6 py-24">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="mb-8">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white mx-auto mb-6 shadow-lg">
+                        <i data-lucide="check" class="w-10 h-10"></i>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">
+                        Discovery Deposit Received
+                    </h1>
+                    <p class="text-xl text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                        Check your email for next steps
+                    </p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-3xl mb-8 text-left">
+                    <h2 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-6">
+                        What Happens Next
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-[var(--sage-green)]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-lucide="mail" class="w-4 h-4 text-[var(--sage-green)]"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-[#2A2A2A] mb-1 font-['Inter']">Booking Link (Within 24 Hours)</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">You'll receive a booking link via email to schedule your discovery call.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-[var(--lavender)]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-lucide="file-text" class="w-4 h-4 text-[var(--lavender)]"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-[#2A2A2A] mb-1 font-['Inter']">Project Questionnaire</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">You'll also receive a project questionnaire to complete before your call.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-[var(--blush-pink)]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-lucide="calendar" class="w-4 h-4 text-[var(--blush-pink)]"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-[#2A2A2A] mb-1 font-['Inter']">Complete Questionnaire</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Please complete the questionnaire at least 24 hours before your scheduled call.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-[var(--sage-green)]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-lucide="file-check" class="w-4 h-4 text-[var(--sage-green)]"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-[#2A2A2A] mb-1 font-['Inter']">Receive Proposal</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Expect a detailed proposal within 3-5 business days after your discovery call.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl mb-8">
+                    <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg mb-4">
+                        Questions? Email us at <a href="mailto:ackers.ml@gmail.com" class="text-[var(--sage-green)] hover:underline font-medium">ackers.ml@gmail.com</a>
+                    </p>
+                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">
+                        We'll respond within 24-48 hours.
+                    </p>
+                </div>
+
+                <a href="index.html" class="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105">
+                    Return to Home
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/30 bg-white/60 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm font-['Inter'] text-[var(--warm-gray)]">
+                © 2025 Michelle Ackers. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-sm font-['Inter'] text-[var(--warm-gray)]">
+                <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[var(--sage-green)] transition-colors">Instagram</a>
+                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+            
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
+

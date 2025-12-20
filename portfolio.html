@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Platform Builds | Michelle Ackers</title>
+    <meta name="description" content="Case studies of platform builds: community platforms, payment infrastructure, course systems, e-commerce stores. Revenue-generating products for founders.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts - Feminine, Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sage-green: #87A96B;
+            --lavender: #B8A9D9;
+            --blush-pink: #F4C2C2;
+            --warm-cream: #FAF7F2;
+            --soft-beige: #F5F1E8;
+            --warm-gray: #6B6B6B;
+            --deep-sage: #6B8E5A;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #FAF7F2 0%, #F5F1E8 100%);
+            color: #3A3A3A;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F5F1E8; }
+        ::-webkit-scrollbar-thumb { background: var(--sage-green); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--deep-sage); }
+        
+        .bg-organic {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--sage-green) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--lavender) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--blush-pink) 0%, transparent 50%);
+        }
+
+        ::selection { background-color: var(--sage-green); color: white; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(107, 142, 90, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen">
+
+    <div class="bg-organic"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/30 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-['Playfair_Display'] font-medium text-[#3A3A3A] flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-sm shadow-lg group-hover:scale-110 transition-transform">
+                    MA
+                </div>
+                <span class="group-hover:text-[var(--sage-green)] transition-colors">Michelle Ackers</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--warm-gray)] font-['Inter']">
+                <a href="services.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Services</a>
+                <a href="portfolio.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Portfolio</a>
+                <a href="about.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">About</a>
+            </div>
+
+            <a href="discovery.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                Book Discovery
+            </a>
+            
+            <button id="mobile-menu-button" class="md:hidden text-[var(--warm-gray)] hover:text-[var(--sage-green)]">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 stroke-[1.5]"></i>
+                <i data-lucide="x" id="close-icon" class="w-6 h-6 stroke-[1.5] hidden"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg">
+            <div class="flex flex-col px-6 py-6 gap-4">
+                <a href="services.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Services</a>
+                <a href="portfolio.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Portfolio</a>
+                <a href="about.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">About</a>
+                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all mt-2">
+                    Book Discovery
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow pt-20">
+        
+        <!-- PORTFOLIO PAGE -->
+        <section class="py-24 px-6 min-h-screen">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 border-b border-[var(--sage-green)]/20 pb-8">
+                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Case Studies</span>
+                    <h1 class="text-5xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight">Platform Builds</h1>
+                    <p class="text-[var(--warm-gray)] text-lg max-w-3xl mt-4 font-light font-['Cormorant_Garamond']">Revenue-generating products built from zero to launch. Complete technical infrastructure that becomes the business.</p>
+                </div>
+
+                <!-- Case Study 1: Community Platform -->
+                <div class="mb-24 border-b border-[var(--sage-green)]/20 pb-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-4">
+                            <span class="text-[var(--sage-green)] font-['Inter'] text-xs uppercase tracking-wider mb-2 block">Case Study 01</span>
+                            <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Community Platform Build</h2>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Client</div>
+                                <div class="text-[#2A2A2A] font-medium font-['Cormorant_Garamond'] text-lg">Education Coach</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Timeline</div>
+                                <div class="text-[#2A2A2A] font-medium font-['Cormorant_Garamond'] text-lg">8 weeks</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Tools</div>
+                                <div class="text-[#2A2A2A] text-sm font-['Inter']">Next.js, PostgreSQL, Stripe, Tailwind, AWS</div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 space-y-6">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Challenge</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Needed platform to exit 9-to-5 and launch online community with recurring revenue. Required member management, content delivery, and subscription integration.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Solution</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed mb-4 font-['Cormorant_Garamond'] text-lg">Built complete community platform with member tiers, content delivery, Stripe subscription integration. Custom member management, automated billing, content gating, progress tracking, engagement features.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Technical Implementation</h3>
+                                <ul class="space-y-2 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Custom member management system</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Automated billing and subscription handling</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Content gating based on membership tier</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Progress tracking and engagement metrics</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Notification system for member activity</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Outcome</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Launched with 200 founding members, $15k monthly recurring revenue. Founder exited corporate job within 3 months of launch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2: Course Platform -->
+                <div class="mb-24 border-b border-[var(--sage-green)]/20 pb-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-4">
+                            <span class="text-[var(--sage-green)] font-['Inter'] text-xs uppercase tracking-wider mb-2 block">Case Study 02</span>
+                            <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Course Platform Build</h2>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Client</div>
+                                <div class="text-[#2A2A2A] font-medium font-['Cormorant_Garamond'] text-lg">Wellness Practitioner</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Timeline</div>
+                                <div class="text-[#2A2A2A] font-medium font-['Cormorant_Garamond'] text-lg">7 weeks</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Tools</div>
+                                <div class="text-[#2A2A2A] text-sm font-['Inter']">Next.js, Vimeo API, PostgreSQL, Stripe, React PDF</div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 space-y-6">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Challenge</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Needed LMS platform to deliver courses, track student progress, issue certificates for certification program.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Solution</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed mb-4 font-['Cormorant_Garamond'] text-lg">Built complete course platform with video delivery, quizzes, progress tracking, certificate generation. Video hosting integration, assessment system, student dashboard, automated certificate PDF generation.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Technical Implementation</h3>
+                                <ul class="space-y-2 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Video hosting integration with Vimeo</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Assessment and quiz system</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Student dashboard with progress tracking</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Automated certificate PDF generation</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Content gating and access control</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Outcome</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Launched with 50 students, $12k revenue first month. Scaled to 300 students in 6 months.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3: Payment Infrastructure -->
+                <div class="mb-24 border-b border-[var(--sage-green)]/20 pb-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-4">
+                            <span class="text-[var(--sage-green)] font-['Inter'] text-xs uppercase tracking-wider mb-2 block">Case Study 03</span>
+                            <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Payment Infrastructure Build</h2>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Client</div>
+                                <div class="text-[#2A2A2A] font-medium font-['Cormorant_Garamond'] text-lg">Subscription Box Startup</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Timeline</div>
+                                <div class="text-[#2A2A2A] font-medium font-['Cormorant_Garamond'] text-lg">5 weeks</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Tools</div>
+                                <div class="text-[#2A2A2A] text-sm font-['Inter']">Stripe, Node.js, PostgreSQL, SendGrid</div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 space-y-6">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Challenge</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Needed payment system to process subscriptions, manage billing, handle payment failures for recurring revenue model.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Solution</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed mb-4 font-['Cormorant_Garamond'] text-lg">Built complete payment infrastructure with subscription management, dunning logic, customer portal. Stripe subscription API, automated payment retry, email notifications, customer self-service portal.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Technical Implementation</h3>
+                                <ul class="space-y-2 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Stripe subscription API integration</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Automated payment retry logic</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Email notifications for payment events</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Customer self-service portal</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Dunning management for failed payments</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Outcome</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Processing $50k monthly recurring revenue, 99% payment success rate, minimal manual intervention required.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 4: E-commerce Platform -->
+                <div class="mb-24 border-b border-[var(--sage-green)]/20 pb-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-4">
+                            <span class="text-[var(--sage-green)] font-['Inter'] text-xs uppercase tracking-wider mb-2 block">Case Study 04</span>
+                            <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">E-commerce Platform Build</h2>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Client</div>
+                                <div class="text-[#2A2A2A] font-medium font-['Cormorant_Garamond'] text-lg">Digital Product Creator</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Timeline</div>
+                                <div class="text-[#2A2A2A] font-medium font-['Cormorant_Garamond'] text-lg">6 weeks</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Tools</div>
+                                <div class="text-[#2A2A2A] text-sm font-['Inter']">Shopify, Liquid, Node.js, AWS S3, Stripe</div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 space-y-6">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Challenge</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Needed e-commerce store to sell digital downloads with instant delivery and licensing for template store.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Solution</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed mb-4 font-['Cormorant_Garamond'] text-lg">Built complete e-commerce platform with product management, checkout, automated delivery, license generation. Shopify custom checkout, automated file delivery, license key generation, customer download portal.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Technical Implementation</h3>
+                                <ul class="space-y-2 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Shopify custom checkout integration</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Automated file delivery system</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>License key generation and tracking</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Customer download portal</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>AWS S3 integration for file storage</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Outcome</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">$25k revenue first quarter, automated delivery eliminated manual work, scaled to 500+ customers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Systems Section -->
+                <div class="mb-24">
+                    <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8">Additional Systems Built</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">SaaS Workflow Design</h3>
+                            <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Execution-ready workflows for critical SaaS processes with automation.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">SaaS Business Process Architecture</h3>
+                            <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Complete business process architecture for scaling SaaS operations.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Coaching Platform Systems</h3>
+                            <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Community and coaching platform infrastructure with member management.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Mac Assistant — Local AI Automation</h3>
+                            <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Local AI automation system for Mac workflows.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Retail & Wholesale Digitization</h3>
+                            <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Complete digitization of retail and wholesale operations.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Fitness Operations Automation</h3>
+                            <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Automated systems for fitness business operations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center py-16 border-t border-[var(--sage-green)]/20">
+                    <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Ready to Build Your Platform?</h2>
+                    <p class="text-[var(--warm-gray)] mb-8 font-light font-['Cormorant_Garamond'] text-lg max-w-2xl mx-auto">Book a discovery call for projects starting at $2,000 USD.</p>
+                    <a href="discovery.html" class="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105">
+                        Book Discovery Call
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/30 bg-white/60 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm font-['Inter'] text-[var(--warm-gray)]">
+                © 2025 Michelle Ackers. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-sm font-['Inter'] text-[var(--warm-gray)]">
+                <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[var(--sage-green)] transition-colors">Instagram</a>
+                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+Software/
+Instagram Strategy/
+.cursor/
+.playwright-mcp/
+*.MOV
+*.wav
+*.7z
+*.pdf
+*.dylib
+*.so
+.venv/
+__pycache__/
+node_modules/
+.DS_Store
+

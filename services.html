@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Platform Builder | Michelle Ackers</title>
+    <meta name="description" content="Service business websites, community platforms, payment infrastructure, e-commerce stores, course systems, custom products. Projects start at $2,000 USD.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts - Feminine, Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sage-green: #87A96B;
+            --lavender: #B8A9D9;
+            --blush-pink: #F4C2C2;
+            --warm-cream: #FAF7F2;
+            --soft-beige: #F5F1E8;
+            --warm-gray: #6B6B6B;
+            --deep-sage: #6B8E5A;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #FAF7F2 0%, #F5F1E8 100%);
+            color: #3A3A3A;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F5F1E8; }
+        ::-webkit-scrollbar-thumb { background: var(--sage-green); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--deep-sage); }
+        
+        .bg-organic {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--sage-green) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--lavender) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--blush-pink) 0%, transparent 50%);
+        }
+
+        ::selection { background-color: var(--sage-green); color: white; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(107, 142, 90, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen text-lg">
+
+    <div class="bg-organic"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/30 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-['Playfair_Display'] font-medium text-[#3A3A3A] flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-sm shadow-lg group-hover:scale-110 transition-transform">
+                    MA
+                </div>
+                <span class="group-hover:text-[var(--sage-green)] transition-colors">Michelle Ackers</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--warm-gray)] font-['Inter']">
+                <a href="services.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Services</a>
+                <a href="portfolio.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Portfolio</a>
+                <a href="about.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">About</a>
+            </div>
+
+            <a href="discovery.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                Book Discovery
+            </a>
+            
+            <button id="mobile-menu-button" class="md:hidden text-[var(--warm-gray)] hover:text-[var(--sage-green)]">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 stroke-[1.5]"></i>
+                <i data-lucide="x" id="close-icon" class="w-6 h-6 stroke-[1.5] hidden"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg">
+            <div class="flex flex-col px-6 py-6 gap-4">
+                <a href="services.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Services</a>
+                <a href="portfolio.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Portfolio</a>
+                <a href="about.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">About</a>
+                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all mt-2">
+                    Book Discovery
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow pt-20">
+        
+        <!-- SERVICES PAGE -->
+        <section class="py-24 px-6 min-h-screen">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 border-b border-[var(--sage-green)]/20 pb-8">
+                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Services</span>
+                    <h1 class="text-5xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight">Platform Builds</h1>
+                    <p class="text-[var(--warm-gray)] text-lg max-w-2xl mt-4 font-light font-['Cormorant_Garamond']">Complete product development from zero to launch. Projects start at $2,000 USD.</p>
+                </div>
+
+                <!-- Service 1: Service Business Websites -->
+                <div id="service-websites" class="mb-24 scroll-mt-20">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-5">
+                            <div class="sticky top-24">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="globe" class="w-7 h-7 stroke-[1.5]"></i>
+                                </div>
+                                <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Service Business Websites</h2>
+                                <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">Professional multi-page websites for coaches, trainers, consultants, therapists.</p>
+                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                    <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$2,000 - $3,000 USD</div>
+                                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                                    Book Discovery
+                                </a>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 space-y-8">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">What I Build</h3>
+                                <ul class="space-y-3 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Services pages with detailed offerings</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>About page with your story and credentials</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Contact forms and inquiry systems</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Package pricing and service tiers</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Booking integration (Calendly, Acuity, etc.)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Mobile responsive design</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>SEO optimization</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">Use Cases</h3>
+                                <p class="text-[var(--warm-gray)] font-light mb-4 font-['Cormorant_Garamond']">Coaches, trainers, consultants, therapists, service-based businesses needing a professional online presence.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">What You Provide</h3>
+                                <p class="text-[var(--warm-gray)] font-light mb-4 font-['Cormorant_Garamond']">Content for pages, service descriptions, branding direction, booking preferences.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">Timeline</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">2-3 weeks from start to launch.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">Example</h3>
+                                <p class="text-[var(--warm-gray)] font-light mb-2 font-['Cormorant_Garamond']">Beckford Fitness website:</p>
+                                <a href="https://beckford-site.vercel.app/" target="_blank" class="text-[var(--sage-green)] hover:underline font-['Inter'] text-sm">https://beckford-site.vercel.app/</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: AI Integration Consultation -->
+                <div id="ai-consultation" class="mb-24 scroll-mt-20 border-t border-[var(--sage-green)]/20 pt-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-5">
+                            <div class="sticky top-24">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="sparkles" class="w-7 h-7 stroke-[1.5]"></i>
+                                </div>
+                                <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">AI Integration Consultation</h2>
+                                <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">Focused 1-2 hour sessions to identify AI automation opportunities in your business.</p>
+                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                    <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$250/hour</div>
+                                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Most clients need 1-2 sessions</p>
+                                </div>
+                                <a href="ai-consultation.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                                    Book Consultation
+                                </a>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 space-y-8">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">What I Cover</h3>
+                                <ul class="space-y-3 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Workflow assessment and bottleneck identification</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>AI tool recommendations (ChatGPT, Claude, MCP servers, custom APIs)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Implementation roadmap with priorities</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Quick wins you can implement immediately</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Written documentation with action items</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">Use Cases</h3>
+                                <p class="text-[var(--warm-gray)] font-light mb-4 font-['Cormorant_Garamond']">Automating customer service, data processing, content creation, lead qualification, document handling, custom AI assistants.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">What You Get</h3>
+                                <p class="text-[var(--warm-gray)] font-light mb-4 font-['Cormorant_Garamond']">Video consultation plus written action plan delivered within 48 hours.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">Timeline</h3>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">1-2 sessions, action plan delivered within 48 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Community Platforms -->
+                <div id="community" class="mb-24 scroll-mt-20 border-t border-[var(--sage-green)]/20 pt-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-5">
+                            <div class="sticky top-24">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="users" class="w-7 h-7 stroke-[1.5]"></i>
+                                </div>
+                                <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Community Platforms</h2>
+                                <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">Complete community platform built from zero. Replaces Circle and Mighty Networks with custom functionality.</p>
+                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                    <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$8,000 - $20,000 USD</div>
+                                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                                    Book Discovery
+                                </a>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 space-y-8">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">What I Build</h3>
+                                <ul class="space-y-3 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Member management with tiered access</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Content delivery and gating</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Subscription integration with Stripe</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Engagement features and notifications</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">Use Cases</h3>
+                                <p class="text-[var(--warm-gray)] font-light mb-4 font-['Cormorant_Garamond']">Membership businesses, coaching programs, online communities, educational platforms.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">What You Provide</h3>
+                                <p class="text-zinc-400 font-light mb-4">Content structure, membership tiers, desired features, branding direction.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">Timeline</h3>
+                                <p class="text-zinc-400 font-light">6-10 weeks depending on feature complexity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Payment Infrastructure -->
+                <div id="payment" class="mb-24 scroll-mt-20 border-t border-[var(--sage-green)]/20 pt-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-5">
+                            <div class="sticky top-24">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="credit-card" class="w-7 h-7 stroke-[1.5]"></i>
+                                </div>
+                                <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Payment Infrastructure</h2>
+                                <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">Complete payment and billing system from scratch. Revenue infrastructure that flows seamlessly and supports your growth.</p>
+                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                    <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$5,000 - $12,000 USD</div>
+                                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                                    Book Discovery
+                                </a>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 space-y-8">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">What I Build</h3>
+                                <ul class="space-y-3 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Stripe integration and subscription billing</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Recurring revenue infrastructure</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Invoice generation systems</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Customer payment portals</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">Use Cases</h3>
+                                <p class="text-zinc-400 font-light mb-4">Recurring revenue businesses, subscription models, payment processing infrastructure.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">What You Provide</h3>
+                                <p class="text-zinc-400 font-light mb-4">Business model details, pricing structure, payment flow requirements.</p>
+                            </div>
+                    <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">Timeline</h3>
+                                <p class="text-zinc-400 font-light">4-6 weeks depending on complexity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3: E-commerce Platforms -->
+                <div id="ecommerce" class="mb-24 scroll-mt-20 border-t border-[var(--sage-green)]/20 pt-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-5">
+                            <div class="sticky top-24">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--blush-pink)] to-[#E8A8A8] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="shopping-cart" class="w-7 h-7 stroke-[1.5]"></i>
+                                </div>
+                                <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">E-commerce Platforms</h2>
+                                <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">Complete online stores with product management, checkout, fulfillment.</p>
+                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                    <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$5,000 - $15,000 USD</div>
+                                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                                    Book Discovery
+                                </a>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 space-y-8">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">What I Build</h3>
+                                <ul class="space-y-3 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Product management and catalog</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Checkout systems and payment processing</span>
+                            </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Inventory management</span>
+                            </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Digital downloads and membership commerce</span>
+                            </li>
+                        </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">Use Cases</h3>
+                                <p class="text-zinc-400 font-light mb-4">Physical product businesses, digital product stores, course commerce, membership stores.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">What You Provide</h3>
+                                <p class="text-zinc-400 font-light mb-4">Product catalog, business model, payment requirements, branding assets.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">Timeline</h3>
+                                <p class="text-zinc-400 font-light">4-8 weeks depending on catalog size.</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                <!-- Service 4: Course Platforms -->
+                <div id="course" class="mb-24 scroll-mt-20 border-t border-[var(--sage-green)]/20 pt-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-5">
+                            <div class="sticky top-24">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--lavender)] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="book-open" class="w-7 h-7 stroke-[1.5]"></i>
+                                </div>
+                                <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Course Platforms</h2>
+                                <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">LMS with video delivery, student tracking, progress monitoring, certificates.</p>
+                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                    <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$8,000 - $18,000 USD</div>
+                                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                                    Book Discovery
+                                </a>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 space-y-8">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">What I Build</h3>
+                                <ul class="space-y-3 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Course delivery and video hosting</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Student tracking and progress monitoring</span>
+                            </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Content gating and access control</span>
+                            </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[#bef264] mt-0.5 flex-shrink-0"></i>
+                                        <span>Certificates and completion tracking</span>
+                            </li>
+                        </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">Use Cases</h3>
+                                <p class="text-zinc-400 font-light mb-4">Online courses, educational programs, training platforms, certification programs.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">What You Provide</h3>
+                                <p class="text-zinc-400 font-light mb-4">Course structure, content delivery method, student experience requirements.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">Timeline</h3>
+                                <p class="text-zinc-400 font-light">6-10 weeks depending on features.</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                <!-- Service 5: Custom Products -->
+                <div id="custom" class="mb-24 scroll-mt-20 border-t border-[var(--sage-green)]/20 pt-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-5">
+                            <div class="sticky top-24">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[var(--blush-pink)] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="sparkles" class="w-7 h-7 stroke-[1.5]"></i>
+                                </div>
+                                <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Custom Product Development</h2>
+                                <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">SaaS MVPs, booking systems, client portals, custom platforms.</p>
+                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                    <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$10,000 - $20,000 USD</div>
+                                    <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                                    Book Discovery
+                                </a>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 space-y-8">
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-4 font-['Playfair_Display']">What I Build</h3>
+                                <ul class="space-y-3 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>SaaS MVPs for specific use cases</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Booking and scheduling systems</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Client portal systems</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Custom platforms tailored to your needs</span>
+                                    </li>
+                        </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">Use Cases</h3>
+                                <p class="text-zinc-400 font-light mb-4">Unique business models, specific technical requirements, products not fitting standard categories.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">What You Provide</h3>
+                                <p class="text-zinc-400 font-light mb-4">Detailed product requirements, user flows, technical specifications, business model.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-white mb-4 font-['Space_Grotesk']">Timeline</h3>
+                                <p class="text-zinc-400 font-light">8-12 weeks depending on scope.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/30 bg-white/60 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm font-['Inter'] text-[var(--warm-gray)]">
+                © 2025 Michelle Ackers. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-sm font-['Inter'] text-[var(--warm-gray)]">
+                <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[var(--sage-green)] transition-colors">Instagram</a>
+                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "michelle-ackers-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Michelle Ackers - Platform Builder",
+  "dependencies": {
+    "stripe": "^14.21.0"
+  }
+}
+
