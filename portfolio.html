@@ -57,6 +57,49 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 8px 32px rgba(107, 142, 90, 0.1);
         }
+        
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.375rem 0.75rem;
+            background: rgba(135, 169, 107, 0.1);
+            border: 1px solid rgba(135, 169, 107, 0.2);
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+        
+        .tech-badge i {
+            width: 0.875rem;
+            height: 0.875rem;
+        }
+        
+        .outcome-metric {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: linear-gradient(135deg, rgba(135, 169, 107, 0.1), rgba(107, 142, 90, 0.05));
+            border: 1px solid rgba(135, 169, 107, 0.2);
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            margin: 0.25rem;
+        }
+        
+        .outcome-metric i {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--sage-green);
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--sage-green), transparent);
+            margin: 3rem 0;
+            opacity: 0.3;
+        }
     </style>
 </head>
 <body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen">
@@ -77,6 +120,7 @@
                 <a href="services.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Services</a>
                 <a href="portfolio.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Portfolio</a>
                 <a href="about.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">About</a>
+                <a href="ai-consultation.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">AI Consultation</a>
             </div>
 
             <a href="discovery.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
@@ -90,11 +134,12 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg z-50">
             <div class="flex flex-col px-6 py-6 gap-4">
                 <a href="services.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Services</a>
                 <a href="portfolio.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Portfolio</a>
                 <a href="about.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">About</a>
+                <a href="ai-consultation.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">AI Consultation</a>
                 <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all mt-2">
                     Book Discovery
                 </a>
@@ -130,7 +175,13 @@
                             </div>
                             <div class="glass-panel p-4 rounded-2xl">
                                 <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Tools</div>
-                                <div class="text-[#2A2A2A] text-sm font-['Inter']">Next.js, PostgreSQL, Stripe, Tailwind, AWS</div>
+                                <div class="flex flex-wrap gap-1 mt-2">
+                                    <span class="tech-badge text-[var(--sage-green)]"><i data-lucide="code"></i> Next.js</span>
+                                    <span class="tech-badge text-[var(--sage-green)]"><i data-lucide="database"></i> PostgreSQL</span>
+                                    <span class="tech-badge text-[var(--sage-green)]"><i data-lucide="credit-card"></i> Stripe</span>
+                                    <span class="tech-badge text-[var(--sage-green)]"><i data-lucide="palette"></i> Tailwind</span>
+                                    <span class="tech-badge text-[var(--sage-green)]"><i data-lucide="cloud"></i> AWS</span>
+                                </div>
                             </div>
                         </div>
                         <div class="lg:col-span-8 space-y-6">
@@ -169,6 +220,20 @@
                             </div>
                             <div>
                                 <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Outcome</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <div class="outcome-metric">
+                                        <i data-lucide="users"></i>
+                                        <span>200+ Members</span>
+                                    </div>
+                                    <div class="outcome-metric">
+                                        <i data-lucide="dollar-sign"></i>
+                                        <span>$15k MRR</span>
+                                    </div>
+                                    <div class="outcome-metric">
+                                        <i data-lucide="rocket"></i>
+                                        <span>3 Months to Exit</span>
+                                    </div>
+                                </div>
                                 <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Launched with 200 founding members, $15k monthly recurring revenue. Founder exited corporate job within 3 months of launch.</p>
                             </div>
                         </div>
@@ -191,7 +256,13 @@
                             </div>
                             <div class="glass-panel p-4 rounded-2xl">
                                 <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Tools</div>
-                                <div class="text-[#2A2A2A] text-sm font-['Inter']">Next.js, Vimeo API, PostgreSQL, Stripe, React PDF</div>
+                                <div class="flex flex-wrap gap-1 mt-2">
+                                    <span class="tech-badge text-[var(--sage-green)]"><i data-lucide="code"></i> Next.js</span>
+                                    <span class="tech-badge text-[var(--sage-green)]"><i data-lucide="video"></i> Vimeo</span>
+                                    <span class="tech-badge text-[var(--sage-green)]"><i data-lucide="database"></i> PostgreSQL</span>
+                                    <span class="tech-badge text-[var(--sage-green)]"><i data-lucide="credit-card"></i> Stripe</span>
+                                    <span class="tech-badge text-[var(--sage-green)]"><i data-lucide="file-text"></i> React PDF</span>
+                                </div>
                             </div>
                         </div>
                         <div class="lg:col-span-8 space-y-6">
@@ -230,6 +301,20 @@
                             </div>
                             <div>
                                 <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Outcome</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <div class="outcome-metric">
+                                        <i data-lucide="graduation-cap"></i>
+                                        <span>50 → 300 Students</span>
+                                    </div>
+                                    <div class="outcome-metric">
+                                        <i data-lucide="dollar-sign"></i>
+                                        <span>$12k First Month</span>
+                                    </div>
+                                    <div class="outcome-metric">
+                                        <i data-lucide="trending-up"></i>
+                                        <span>6 Month Growth</span>
+                                    </div>
+                                </div>
                                 <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Launched with 50 students, $12k revenue first month. Scaled to 300 students in 6 months.</p>
                             </div>
                         </div>
@@ -358,31 +443,115 @@
                     </div>
                 </div>
 
+                <!-- Case Study 5: Beckford Moves Website -->
+                <div class="mb-24 border-b border-[var(--sage-green)]/20 pb-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-4">
+                            <span class="text-[var(--sage-green)] font-['Inter'] text-xs uppercase tracking-wider mb-2 block">Case Study 05</span>
+                            <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Beckford Moves Website</h2>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Client</div>
+                                <div class="text-[#2A2A2A] font-medium font-['Cormorant_Garamond'] text-lg">Sean Beckford - Personal Trainer</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Timeline</div>
+                                <div class="text-[#2A2A2A] font-medium font-['Cormorant_Garamond'] text-lg">3 weeks</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl mb-6">
+                                <div class="text-xs text-[var(--warm-gray)] font-['Inter'] mb-2 uppercase tracking-wider">Tools</div>
+                                <div class="text-[#2A2A2A] text-sm font-['Inter']">Next.js, React, Framer Motion, Tailwind CSS, TypeScript</div>
+                            </div>
+                            <div class="glass-panel p-4 rounded-2xl">
+                                <a href="https://www.beckfordmoves.com" target="_blank" class="inline-flex items-center gap-2 text-[var(--sage-green)] hover:text-[var(--deep-sage)] font-['Inter'] font-medium transition-colors">
+                                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                                    Visit Live Site
+                                </a>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 space-y-6">
+                            <div class="rounded-2xl overflow-hidden shadow-2xl mb-6">
+                                <div class="aspect-video bg-gradient-to-br from-[var(--sage-green)]/20 to-[var(--lavender)]/20 flex items-center justify-center">
+                                    <a href="https://www.beckfordmoves.com" target="_blank" class="group">
+                                        <div class="text-center">
+                                            <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                                <i data-lucide="external-link" class="w-12 h-12 text-[var(--sage-green)]"></i>
+                                            </div>
+                                            <p class="text-[var(--warm-gray)] font-['Inter'] font-medium">View Interactive Website</p>
+                                            <p class="text-sm text-[var(--warm-gray)]/70 mt-1">www.beckfordmoves.com</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Challenge</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Needed a modern, interactive website for personal training business that showcases services, packages, and client success stories. Required engaging user experience with smooth animations and visual appeal.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Solution</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed mb-4 font-['Cormorant_Garamond'] text-lg">Built a fully interactive website with Framer Motion animations, Instagram feed integration, Google Reviews display, and smooth scroll interactions. Features include package pricing, service descriptions, certification showcase, and contact forms.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Key Features</h3>
+                                <ul class="space-y-2 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Interactive animations with Framer Motion</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Live Instagram feed integration</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Google Reviews display component</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Package pricing with clear CTAs</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Responsive design for all devices</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-5 h-5 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
+                                        <span>Smooth scroll animations and transitions</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Outcome</h3>
+                                <p class="text-[var(--warm-gray)] font-light leading-relaxed font-['Cormorant_Garamond'] text-lg">Launched a highly interactive, visually engaging website that effectively showcases services and converts visitors. The site features smooth animations, real-time social media integration, and a modern design that reflects the brand's professional yet approachable identity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Additional Systems Section -->
                 <div class="mb-24">
                     <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8">Additional Systems Built</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="glass-panel p-6 rounded-2xl">
+                        <div class="glass-panel p-6 rounded-2xl hover:shadow-xl transition-all hover:-translate-y-1">
                             <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">SaaS Workflow Design</h3>
                             <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Execution-ready workflows for critical SaaS processes with automation.</p>
                         </div>
-                        <div class="glass-panel p-6 rounded-2xl">
+                        <div class="glass-panel p-6 rounded-2xl hover:shadow-xl transition-all hover:-translate-y-1">
                             <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">SaaS Business Process Architecture</h3>
                             <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Complete business process architecture for scaling SaaS operations.</p>
                         </div>
-                        <div class="glass-panel p-6 rounded-2xl">
+                        <div class="glass-panel p-6 rounded-2xl hover:shadow-xl transition-all hover:-translate-y-1">
                             <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Coaching Platform Systems</h3>
                             <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Community and coaching platform infrastructure with member management.</p>
                         </div>
-                        <div class="glass-panel p-6 rounded-2xl">
+                        <div class="glass-panel p-6 rounded-2xl hover:shadow-xl transition-all hover:-translate-y-1">
                             <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Mac Assistant — Local AI Automation</h3>
                             <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Local AI automation system for Mac workflows.</p>
                         </div>
-                        <div class="glass-panel p-6 rounded-2xl">
+                        <div class="glass-panel p-6 rounded-2xl hover:shadow-xl transition-all hover:-translate-y-1">
                             <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Retail & Wholesale Digitization</h3>
                             <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Complete digitization of retail and wholesale operations.</p>
                         </div>
-                        <div class="glass-panel p-6 rounded-2xl">
+                        <div class="glass-panel p-6 rounded-2xl hover:shadow-xl transition-all hover:-translate-y-1">
                             <h3 class="text-lg font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Fitness Operations Automation</h3>
                             <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Automated systems for fitness business operations.</p>
                         </div>
@@ -411,7 +580,7 @@
             </div>
             <div class="flex gap-6 text-sm font-['Inter'] text-[var(--warm-gray)]">
                 <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[var(--sage-green)] transition-colors">Instagram</a>
-                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Systems Operational</span>
+                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Available for Projects</span>
             </div>
         </div>
     </footer>

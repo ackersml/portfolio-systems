@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Program Application | Michelle Ackers</title>
+    <meta name="description" content="Apply to become an affiliate and earn commission by referring clients who need platform builds and websites.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sage-green: #87A96B;
+            --lavender: #B8A9D9;
+            --blush-pink: #F4C2C2;
+            --warm-cream: #FAF7F2;
+            --soft-beige: #F5F1E8;
+            --warm-gray: #6B6B6B;
+            --deep-sage: #6B8E5A;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #FAF7F2 0%, #F5F1E8 100%);
+            color: #3A3A3A;
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F5F1E8; }
+        ::-webkit-scrollbar-thumb { background: var(--sage-green); border-radius: 4px; }
+        
+        .bg-organic {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--sage-green) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--lavender) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--blush-pink) 0%, transparent 50%);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(107, 142, 90, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen">
+
+    <div class="bg-organic"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/30 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-['Playfair_Display'] font-medium text-[#3A3A3A] flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-sm shadow-lg group-hover:scale-110 transition-transform">
+                    MA
+                </div>
+                <span class="group-hover:text-[var(--sage-green)] transition-colors">Michelle Ackers</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--warm-gray)] font-['Inter']">
+                <a href="services.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Services</a>
+                <a href="portfolio.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Portfolio</a>
+                <a href="about.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">About</a>
+            </div>
+
+            <a href="discovery.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
+                Book Discovery
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow pt-20">
+        
+        <section class="py-24 px-6 min-h-screen">
+            <div class="max-w-3xl mx-auto">
+                
+                <!-- Header -->
+                <div class="mb-12 text-center">
+                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Affiliate Program</span>
+                    <h1 class="text-5xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">
+                        Earn Commission by <span class="text-[var(--sage-green)]">Referring Clients</span>
+                    </h1>
+                    <p class="text-[var(--warm-gray)] text-lg max-w-2xl mx-auto font-light font-['Cormorant_Garamond']">
+                        Pure commission structure. No upfront costs. Get paid when clients book and pay for platform builds.
+                    </p>
+                </div>
+
+                <!-- Quick Info -->
+                <div class="glass-panel p-8 rounded-3xl mb-12">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-['Playfair_Display'] font-semibold text-[var(--sage-green)] mb-2">10-20%</div>
+                            <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Commission Rate</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-['Playfair_Display'] font-semibold text-[var(--lavender)] mb-2">$300-$2k</div>
+                            <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Per Referral</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-['Playfair_Display'] font-semibold text-[var(--blush-pink)] mb-2">7 Days</div>
+                            <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Payment Time</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Application Form -->
+                <div class="glass-panel p-8 rounded-3xl">
+                    <h2 class="text-3xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-6">Application Form</h2>
+                    
+                    <form id="affiliate-form" class="space-y-6">
+                        <!-- Name -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">Full Name *</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 rounded-lg border border-[var(--sage-green)]/30 bg-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--sage-green)] focus:border-transparent">
+                        </div>
+
+                        <!-- Instagram Handle -->
+                        <div>
+                            <label for="instagram" class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">Instagram Handle *</label>
+                            <input type="text" id="instagram" name="instagram" placeholder="@yourhandle" required
+                                class="w-full px-4 py-3 rounded-lg border border-[var(--sage-green)]/30 bg-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--sage-green)] focus:border-transparent">
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">Email Address *</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 rounded-lg border border-[var(--sage-green)]/30 bg-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--sage-green)] focus:border-transparent">
+                        </div>
+
+                        <!-- Why Interested -->
+                        <div>
+                            <label for="why" class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">Why are you interested in this affiliate program? *</label>
+                            <textarea id="why" name="why" rows="4" required
+                                class="w-full px-4 py-3 rounded-lg border border-[var(--sage-green)]/30 bg-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--sage-green)] focus:border-transparent"></textarea>
+                        </div>
+
+                        <!-- Network Question -->
+                        <div>
+                            <label class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">Do you have a network of business owners, coaches, or entrepreneurs? *</label>
+                            <div class="flex gap-6">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="has_network" value="yes" required class="w-4 h-4 text-[var(--sage-green)]">
+                                    <span class="text-[var(--warm-gray)] font-['Inter']">Yes</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="has_network" value="no" required class="w-4 h-4 text-[var(--sage-green)]">
+                                    <span class="text-[var(--warm-gray)] font-['Inter']">No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Follower Count (Optional) -->
+                        <div>
+                            <label for="followers" class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">Instagram Follower Count <span class="text-[var(--warm-gray)] font-normal">(Optional)</span></label>
+                            <input type="number" id="followers" name="followers" placeholder="e.g., 5000"
+                                class="w-full px-4 py-3 rounded-lg border border-[var(--sage-green)]/30 bg-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--sage-green)] focus:border-transparent">
+                        </div>
+
+                        <!-- How Will You Share -->
+                        <div>
+                            <label for="sharing_method" class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">How do you plan to share affiliate links? *</label>
+                            <select id="sharing_method" name="sharing_method" required
+                                class="w-full px-4 py-3 rounded-lg border border-[var(--sage-green)]/30 bg-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--sage-green)] focus:border-transparent">
+                                <option value="">Select an option</option>
+                                <option value="instagram_stories">Instagram Stories</option>
+                                <option value="instagram_posts">Instagram Posts</option>
+                                <option value="dms">Direct Messages</option>
+                                <option value="email">Email</option>
+                                <option value="other_platforms">Other Platforms (TikTok, LinkedIn, etc.)</option>
+                                <option value="multiple">Multiple methods</option>
+                            </select>
+                        </div>
+
+                        <!-- Previous Experience -->
+                        <div>
+                            <label class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">Have you done affiliate marketing before? <span class="text-[var(--warm-gray)] font-normal">(Optional)</span></label>
+                            <div class="flex gap-6">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="experience" value="yes" class="w-4 h-4 text-[var(--sage-green)]">
+                                    <span class="text-[var(--warm-gray)] font-['Inter']">Yes</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="experience" value="no" class="w-4 h-4 text-[var(--sage-green)]">
+                                    <span class="text-[var(--warm-gray)] font-['Inter']">No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div>
+                            <label for="payment_method" class="block text-sm font-medium text-[#2A2A2A] mb-2 font-['Inter']">Preferred Payment Method *</label>
+                            <select id="payment_method" name="payment_method" required
+                                class="w-full px-4 py-3 rounded-lg border border-[var(--sage-green)]/30 bg-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--sage-green)] focus:border-transparent">
+                                <option value="">Select payment method</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="bank_transfer">Bank Transfer</option>
+                                <option value="stripe">Stripe Payout</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-4">
+                            <button type="submit" 
+                                class="w-full inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105">
+                                Submit Application
+                            </button>
+                        </div>
+
+                        <!-- Success/Error Messages -->
+                        <div id="form-message" class="hidden mt-4 p-4 rounded-lg"></div>
+                    </form>
+                </div>
+
+                <!-- Info Section -->
+                <div class="mt-12 glass-panel p-8 rounded-3xl">
+                    <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">What Happens Next?</h3>
+                    <ol class="space-y-3 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--sage-green)] font-['Inter'] font-semibold">1.</span>
+                            <span>You'll receive an email within 24 hours with approval status</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--sage-green)] font-['Inter'] font-semibold">2.</span>
+                            <span>If approved, you'll get your unique affiliate link and dashboard access</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--sage-green)] font-['Inter'] font-semibold">3.</span>
+                            <span>You'll receive marketing materials and templates</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--sage-green)] font-['Inter'] font-semibold">4.</span>
+                            <span>Start sharing your link and earning commissions!</span>
+                        </li>
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/30 bg-white/60 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm font-['Inter'] text-[var(--warm-gray)]">
+                © 2025 Michelle Ackers. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-sm font-['Inter'] text-[var(--warm-gray)]">
+                <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[var(--sage-green)] transition-colors">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Form submission
+        document.getElementById('affiliate-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            const submitButton = form.querySelector('button[type="submit"]');
+            const messageDiv = document.getElementById('form-message');
+            
+            // Disable button
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            messageDiv.classList.add('hidden');
+            
+            try {
+                const response = await fetch('/api/affiliate-apply.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(result.error || 'Failed to submit application');
+                }
+                
+                // Show success message
+                messageDiv.classList.remove('hidden');
+                messageDiv.className = 'mt-4 p-4 rounded-lg bg-green-50 border border-green-200 text-green-800';
+                messageDiv.textContent = result.message || 'Application submitted! You\'ll receive an email within 24 hours with your approval status.';
+                
+                // Reset form
+                form.reset();
+                
+            } catch (error) {
+                messageDiv.classList.remove('hidden');
+                messageDiv.className = 'mt-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800';
+                messageDiv.textContent = 'Error submitting application. Please try again or DM @michelleackers on Instagram.';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit Application';
+            }
+        });
+    </script>
+
+</body>
+</html>
+

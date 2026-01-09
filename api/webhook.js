@@ -2,7 +2,9 @@
 // This handles payment events from Stripe
 // Install Stripe: npm install stripe
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+import Stripe from 'stripe';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -29,6 +31,45 @@ export default async function handler(req, res) {
     case 'payment_intent.succeeded':
       const paymentIntent = event.data.object;
       console.log('Payment succeeded:', paymentIntent.id);
+      
+      // Track affiliate conversion if affiliate code exists
+      const affiliateCode = paymentIntent.metadata?.affiliate_code;
+      if (affiliateCode) {
+        // Determine service type from payment description or metadata
+        const serviceType = paymentIntent.metadata?.service_type || 
+                           (paymentIntent.description?.toLowerCase().includes('discovery') ? 'service_website' : 'custom');
+        
+        const amount = paymentIntent.amount / 100; // Convert cents to dollars
+        
+        // Call conversion tracking endpoint
+        try {
+          const conversionResponse = await fetch(`${process.env.SITE_URL || 'http://localhost:3000'}/api/track-conversion`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              affiliate_code: affiliateCode,
+              conversion_type: 'payment',
+              metadata: {
+                payment_intent_id: paymentIntent.id,
+                amount: paymentIntent.amount, // Keep in cents for consistency
+                currency: paymentIntent.currency,
+                service_type: serviceType,
+                email: paymentIntent.metadata?.email || paymentIntent.receipt_email
+              },
+              timestamp: new Date().toISOString()
+            })
+          });
+          
+          if (!conversionResponse.ok) {
+            console.error('Failed to track affiliate conversion:', await conversionResponse.text());
+          }
+        } catch (error) {
+          console.error('Error tracking affiliate conversion:', error);
+          // Don't fail the webhook, just log
+        }
+      }
       
       // TODO: Implement these actions:
       // 1. Send booking link email to paymentIntent.metadata.email
@@ -68,4 +109,5 @@ export default async function handler(req, res) {
 
 // For Vercel, you need to configure the webhook endpoint in Stripe Dashboard
 // and add STRIPE_WEBHOOK_SECRET to your environment variables
+
 

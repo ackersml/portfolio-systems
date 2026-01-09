@@ -57,6 +57,38 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 8px 32px rgba(107, 142, 90, 0.1);
         }
+        
+        .price-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(135, 169, 107, 0.15), rgba(107, 142, 90, 0.15));
+            border: 1px solid rgba(135, 169, 107, 0.3);
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .visual-pricing-card {
+            background: linear-gradient(135deg, rgba(135, 169, 107, 0.1), rgba(184, 169, 217, 0.05));
+            border: 2px solid rgba(135, 169, 107, 0.2);
+        }
+        
+        .timeline-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(135, 169, 107, 0.1);
+            border: 1px solid rgba(135, 169, 107, 0.2);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+        
+        .timeline-indicator i {
+            width: 1rem;
+            height: 1rem;
+        }
     </style>
 </head>
 <body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen text-lg">
@@ -77,6 +109,7 @@
                 <a href="services.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Services</a>
                 <a href="portfolio.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Portfolio</a>
                 <a href="about.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">About</a>
+                <a href="ai-consultation.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">AI Consultation</a>
             </div>
 
             <a href="discovery.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
@@ -90,11 +123,12 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg z-50">
             <div class="flex flex-col px-6 py-6 gap-4">
                 <a href="services.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Services</a>
                 <a href="portfolio.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Portfolio</a>
                 <a href="about.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">About</a>
+                <a href="ai-consultation.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">AI Consultation</a>
                 <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all mt-2">
                     Book Discovery
                 </a>
@@ -119,14 +153,20 @@
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         <div class="lg:col-span-5">
                             <div class="sticky top-24">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center mb-6 text-white shadow-lg">
-                                    <i data-lucide="globe" class="w-7 h-7 stroke-[1.5]"></i>
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="globe" class="w-10 h-10 stroke-[1.5]"></i>
                                 </div>
                                 <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Service Business Websites</h2>
                                 <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">Professional multi-page websites for coaches, trainers, consultants, therapists.</p>
-                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                <div class="glass-panel visual-pricing-card p-6 rounded-2xl mb-6">
                                     <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$2,000 - $3,000 USD</div>
                                     <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <div class="mb-4">
+                                    <span class="timeline-indicator text-[var(--sage-green)]">
+                                        <i data-lucide="clock" class="w-4 h-4"></i>
+                                        2-3 weeks
+                                    </span>
                                 </div>
                                 <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
                                     Book Discovery
@@ -193,14 +233,20 @@
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         <div class="lg:col-span-5">
                             <div class="sticky top-24">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4] flex items-center justify-center mb-6 text-white shadow-lg">
-                                    <i data-lucide="sparkles" class="w-7 h-7 stroke-[1.5]"></i>
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="sparkles" class="w-10 h-10 stroke-[1.5]"></i>
                                 </div>
                                 <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">AI Integration Consultation</h2>
                                 <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">Focused 1-2 hour sessions to identify AI automation opportunities in your business.</p>
-                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                <div class="glass-panel visual-pricing-card p-6 rounded-2xl mb-6">
                                     <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$250/hour</div>
                                     <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Most clients need 1-2 sessions</p>
+                                </div>
+                                <div class="mb-4">
+                                    <span class="timeline-indicator text-[var(--lavender)]">
+                                        <i data-lucide="clock" class="w-4 h-4"></i>
+                                        1-2 hours
+                                    </span>
                                 </div>
                                 <a href="ai-consultation.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
                                     Book Consultation
@@ -254,14 +300,20 @@
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         <div class="lg:col-span-5">
                             <div class="sticky top-24">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center mb-6 text-white shadow-lg">
-                                    <i data-lucide="users" class="w-7 h-7 stroke-[1.5]"></i>
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="users" class="w-10 h-10 stroke-[1.5]"></i>
                                 </div>
                                 <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Community Platforms</h2>
                                 <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">Complete community platform built from zero. Replaces Circle and Mighty Networks with custom functionality.</p>
-                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                <div class="glass-panel visual-pricing-card p-6 rounded-2xl mb-6">
                                     <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$8,000 - $20,000 USD</div>
                                     <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <div class="mb-4">
+                                    <span class="timeline-indicator text-[var(--sage-green)]">
+                                        <i data-lucide="clock" class="w-4 h-4"></i>
+                                        6-10 weeks
+                                    </span>
                                 </div>
                                 <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
                                     Book Discovery
@@ -311,14 +363,20 @@
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         <div class="lg:col-span-5">
                             <div class="sticky top-24">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4] flex items-center justify-center mb-6 text-white shadow-lg">
-                                    <i data-lucide="credit-card" class="w-7 h-7 stroke-[1.5]"></i>
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="credit-card" class="w-10 h-10 stroke-[1.5]"></i>
                                 </div>
                                 <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Payment Infrastructure</h2>
                                 <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">Complete payment and billing system from scratch. Revenue infrastructure that flows seamlessly and supports your growth.</p>
-                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                <div class="glass-panel visual-pricing-card p-6 rounded-2xl mb-6">
                                     <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$5,000 - $12,000 USD</div>
                                     <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <div class="mb-4">
+                                    <span class="timeline-indicator text-[var(--lavender)]">
+                                        <i data-lucide="clock" class="w-4 h-4"></i>
+                                        4-6 weeks
+                                    </span>
                                 </div>
                                 <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
                                     Book Discovery
@@ -368,14 +426,20 @@
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         <div class="lg:col-span-5">
                             <div class="sticky top-24">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--blush-pink)] to-[#E8A8A8] flex items-center justify-center mb-6 text-white shadow-lg">
-                                    <i data-lucide="shopping-cart" class="w-7 h-7 stroke-[1.5]"></i>
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--blush-pink)] to-[#E8A8A8] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="shopping-cart" class="w-10 h-10 stroke-[1.5]"></i>
                                 </div>
                                 <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">E-commerce Platforms</h2>
                                 <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">Complete online stores with product management, checkout, fulfillment.</p>
-                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                <div class="glass-panel visual-pricing-card p-6 rounded-2xl mb-6">
                                     <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$5,000 - $15,000 USD</div>
                                     <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <div class="mb-4">
+                                    <span class="timeline-indicator text-[var(--blush-pink)]">
+                                        <i data-lucide="clock" class="w-4 h-4"></i>
+                                        4-8 weeks
+                                    </span>
                                 </div>
                                 <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
                                     Book Discovery
@@ -425,14 +489,20 @@
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         <div class="lg:col-span-5">
                             <div class="sticky top-24">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--lavender)] flex items-center justify-center mb-6 text-white shadow-lg">
-                                    <i data-lucide="book-open" class="w-7 h-7 stroke-[1.5]"></i>
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--lavender)] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="book-open" class="w-10 h-10 stroke-[1.5]"></i>
                                 </div>
                                 <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Course Platforms</h2>
                                 <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">LMS with video delivery, student tracking, progress monitoring, certificates.</p>
-                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                <div class="glass-panel visual-pricing-card p-6 rounded-2xl mb-6">
                                     <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$8,000 - $18,000 USD</div>
                                     <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <div class="mb-4">
+                                    <span class="timeline-indicator text-[var(--sage-green)]">
+                                        <i data-lucide="clock" class="w-4 h-4"></i>
+                                        6-10 weeks
+                                    </span>
                                 </div>
                                 <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
                                     Book Discovery
@@ -482,14 +552,20 @@
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         <div class="lg:col-span-5">
                             <div class="sticky top-24">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[var(--blush-pink)] flex items-center justify-center mb-6 text-white shadow-lg">
-                                    <i data-lucide="sparkles" class="w-7 h-7 stroke-[1.5]"></i>
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[var(--blush-pink)] flex items-center justify-center mb-6 text-white shadow-lg">
+                                    <i data-lucide="sparkles" class="w-10 h-10 stroke-[1.5]"></i>
                                 </div>
                                 <h2 class="text-4xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-4">Custom Product Development</h2>
                                 <p class="text-[var(--warm-gray)] text-lg mb-6 font-light font-['Cormorant_Garamond']">SaaS MVPs, booking systems, client portals, custom platforms.</p>
-                                <div class="glass-panel p-6 rounded-2xl mb-6">
+                                <div class="glass-panel visual-pricing-card p-6 rounded-2xl mb-6">
                                     <div class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">$10,000 - $20,000 USD</div>
                                     <p class="text-sm text-[var(--warm-gray)] font-['Inter']">Typical project range</p>
+                                </div>
+                                <div class="mb-4">
+                                    <span class="timeline-indicator text-[var(--lavender)]">
+                                        <i data-lucide="clock" class="w-4 h-4"></i>
+                                        8-12 weeks
+                                    </span>
                                 </div>
                                 <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
                                     Book Discovery
@@ -547,7 +623,7 @@
             </div>
             <div class="flex gap-6 text-sm font-['Inter'] text-[var(--warm-gray)]">
                 <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[var(--sage-green)] transition-colors">Instagram</a>
-                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Systems Operational</span>
+                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Available for Projects</span>
             </div>
         </div>
     </footer>
