@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Integration Consultation | Michelle Ackers</title>
-    <meta name="description" content="1-2 hour focused sessions to identify AI automation opportunities in your business. Get specific recommendations and an implementation roadmap for $250/hour.">
+    <meta name="description" content="1-2 hour focused sessions to identify AI automation opportunities in your business. Get specific recommendations and an implementation roadmap for $125/hour.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -124,7 +124,7 @@
                 </p>
                 <div class="glass-panel p-6 rounded-3xl mb-8 inline-block">
                     <p class="text-lg text-[#2A2A2A] font-['Cormorant_Garamond'] mb-2">
-                        <span class="font-semibold text-[var(--sage-green)]">$250/hour</span>
+                        <span class="font-semibold text-[var(--sage-green)]">$125/hour</span>
                     </p>
                     <p class="text-sm text-[var(--warm-gray)] font-['Inter']">
                         Most clients need 1-2 sessions
@@ -347,7 +347,7 @@
                             </div>
                             <div>
                                 <h3 class="text-xl font-medium text-[#2A2A2A] mb-2 font-['Playfair_Display']">Book Your Session</h3>
-                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Pay $250 for 1-hour consultation via Stripe</p>
+                                <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Pay $125 for 1-hour consultation via Stripe</p>
                             </div>
                         </div>
                     </div>
@@ -386,7 +386,7 @@
                     </div>
                 </div>
                 <p class="text-center mt-8 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">
-                    Optional: Book additional session ($250) to review implementation or dive deeper
+                    Optional: Book additional session ($125) to review implementation or dive deeper
                 </p>
             </div>
         </section>
@@ -414,7 +414,7 @@
                             </li>
                             <li class="flex items-start gap-3">
                                 <i data-lucide="check-circle" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
-                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">Your budget is $250-$500 for initial consultation</span>
+                                <span class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">Your budget is $125-$250 for initial consultation</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i data-lucide="check-circle" class="w-6 h-6 text-[var(--sage-green)] mt-0.5 flex-shrink-0"></i>
@@ -467,7 +467,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                     <div class="glass-panel p-8 rounded-3xl text-center">
                         <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">1-Hour Session</h3>
-                        <p class="text-3xl font-['Playfair_Display'] font-semibold text-[var(--sage-green)] mb-4">$250 USD</p>
+                        <p class="text-3xl font-['Playfair_Display'] font-semibold text-[var(--sage-green)] mb-4">$125 USD</p>
                         <button id="book-1-hour-bottom" class="w-full py-3 px-6 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
                             Book Now
                         </button>
@@ -475,7 +475,7 @@
                     <div class="glass-panel p-8 rounded-3xl text-center border-2 border-[var(--sage-green)]/30">
                         <div class="text-xs text-[var(--sage-green)] font-['Inter'] uppercase tracking-wider mb-2">Recommended</div>
                         <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">2-Hour Session</h3>
-                        <p class="text-3xl font-['Playfair_Display'] font-semibold text-[var(--sage-green)] mb-4">$500 USD</p>
+                        <p class="text-3xl font-['Playfair_Display'] font-semibold text-[var(--sage-green)] mb-4">$250 USD</p>
                         <p class="text-xs text-[var(--warm-gray)] mb-4 font-['Inter']">For complex workflows</p>
                         <button id="book-2-hour-bottom" class="w-full py-3 px-6 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
                             Book Now
@@ -607,23 +607,35 @@
                     },
                     body: JSON.stringify({
                         hours: hours,
-                        price: hours === 1 ? 25000 : 50000, // in cents
+                        price: hours === 1 ? 12500 : 25000, // in cents ($125/hour)
                     }),
                 });
 
-                const session = await response.json();
-                
-                // Redirect to Stripe Checkout
-                const result = await stripe.redirectToCheckout({
-                    sessionId: session.id,
-                });
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error?.message || 'Failed to create checkout session');
+                }
 
-                if (result.error) {
-                    alert(result.error.message);
+                const data = await response.json();
+                
+                // If URL is provided, redirect directly
+                if (data.url) {
+                    window.location.href = data.url;
+                } else if (data.id) {
+                    // Fallback: Use Stripe.js redirect
+                    const result = await stripe.redirectToCheckout({
+                        sessionId: data.id,
+                    });
+
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                } else {
+                    throw new Error('No checkout session URL or ID returned');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred. Please try again.');
+                alert('An error occurred. Please try again. ' + error.message);
             }
         }
 
