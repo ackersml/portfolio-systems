@@ -1,9 +1,11 @@
 // Vercel Serverless Function for Stripe Checkout Session
 // This creates a Stripe Checkout session for AI consultation bookings
 
-const stripe = require('stripe')((process.env.STRIPE_SECRET_KEY || '').trim());
+import Stripe from 'stripe';
 
-module.exports = async (req, res) => {
+const stripe = new Stripe((process.env.STRIPE_SECRET_KEY || '').trim());
+
+export default async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -14,7 +16,7 @@ module.exports = async (req, res) => {
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: { message: 'Method not allowed' } });
   }
 
   try {
@@ -68,7 +70,7 @@ module.exports = async (req, res) => {
       error: { message: error.message || 'An error occurred processing your payment' } 
     });
   }
-};
+}
 
 
 
