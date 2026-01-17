@@ -36,8 +36,8 @@ export default async function handler(req, res) {
         },
       ],
       mode: 'payment',
-      success_url: `${req.headers.origin || 'https://michelleackers.com'}/ai-consultation-thank-you.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.origin || 'https://michelleackers.com'}/ai-consultation.html`,
+      success_url: `${req.headers.origin || 'https://michelleackers.com'}/success?session_id={CHECKOUT_SESSION_ID}&type=consultation`,
+      cancel_url: `${req.headers.origin || 'https://michelleackers.com'}/ai-consultation`,
       metadata: {
         type: 'ai_consultation',
         hours: hours.toString(),
@@ -46,7 +46,10 @@ export default async function handler(req, res) {
       customer_email: undefined, // Will be collected in checkout
     });
 
-    res.status(200).json({ id: session.id });
+    res.status(200).json({ 
+      id: session.id,
+      url: session.url 
+    });
 
   } catch (error) {
     console.error('Stripe error:', error);
@@ -55,6 +58,8 @@ export default async function handler(req, res) {
     });
   }
 }
+
+
 
 
 
