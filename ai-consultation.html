@@ -600,7 +600,7 @@
         // Create Stripe Checkout Session
         async function createCheckoutSession(hours) {
             try {
-                const response = await fetch('/api/create-checkout-session', {
+                const response = await fetch('https://michelle-s-studio.vercel.app/api/create-checkout-session', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
