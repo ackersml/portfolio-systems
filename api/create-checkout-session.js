@@ -1,10 +1,18 @@
 // Vercel Serverless Function for Stripe Checkout Session
 // This creates a Stripe Checkout session for AI consultation bookings
-// Install Stripe: npm install stripe
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')((process.env.STRIPE_SECRET_KEY || '').trim());
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -19,6 +27,9 @@ export default async function handler(req, res) {
       });
     }
 
+    // Get origin from headers or use default
+    const origin = req.headers.origin || req.headers.referer?.split('/').slice(0, 3).join('/') || 'https://michelleackers.com';
+
     // Create Checkout Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -30,14 +41,14 @@ export default async function handler(req, res) {
               name: `AI Integration Consultation - ${hours} Hour${hours > 1 ? 's' : ''}`,
               description: `${hours}-hour focused session to identify AI automation opportunities and create an actionable implementation roadmap`,
             },
-            unit_amount: price, // Price in cents (25000 = $250.00)
+            unit_amount: price, // Price in cents (12500 = $125.00)
           },
           quantity: 1,
         },
       ],
       mode: 'payment',
-      success_url: `${req.headers.origin || 'https://michelleackers.com'}/success?session_id={CHECKOUT_SESSION_ID}&type=consultation`,
-      cancel_url: `${req.headers.origin || 'https://michelleackers.com'}/ai-consultation`,
+      success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}&type=consultation`,
+      cancel_url: `${origin}/ai-consultation`,
       metadata: {
         type: 'ai_consultation',
         hours: hours.toString(),
@@ -57,7 +68,7 @@ export default async function handler(req, res) {
       error: { message: error.message || 'An error occurred processing your payment' } 
     });
   }
-}
+};
 
 
 
