@@ -3,924 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michelle Ackers | Platform Builder for Mission-Driven Founders</title>
-    <meta name="description" content="Platform builder for founders exiting 9-to-5. Service business websites, community platforms, payment systems, course infrastructure, complete product builds. Projects start at $2,000 USD.">
+    <title>Cornerstone Devs | Full-Stack Developers &amp; Product Engineers</title>
+    <meta name="description" content="Cornerstone Developers — software development. Full-stack developers and product engineers. Custom platforms, APIs, payments, and product builds from discovery to deployment. Projects from $2,000 USD.">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Google Fonts - Feminine, Elegant Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <style>
-        :root {
-            --sage-green: #87A96B;
-            --lavender: #B8A9D9;
-            --blush-pink: #F4C2C2;
-            --warm-cream: #FAF7F2;
-            --soft-beige: #F5F1E8;
-            --warm-gray: #6B6B6B;
-            --deep-sage: #6B8E5A;
-        }
-        
-        body {
-            background: linear-gradient(180deg, #FAF7F2 0%, #F5F1E8 100%);
-            color: #3A3A3A;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #F5F1E8; }
-        ::-webkit-scrollbar-thumb { background: var(--sage-green); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--deep-sage); }
-        
-        /* Organic Background Pattern */
-        .bg-organic {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0; opacity: 0.03;
-            background-image: 
-                radial-gradient(circle at 20% 50%, var(--sage-green) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, var(--lavender) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, var(--blush-pink) 0%, transparent 50%);
-        }
-
-        ::selection { background-color: var(--sage-green); color: white; }
-        
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 32px rgba(107, 142, 90, 0.1);
-        }
-
-        .organic-shape {
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        }
-
-        /* Animations */
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(2deg); } }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-        @keyframes shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
-        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        
-        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
-        .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
-        .animate-slide-in-left { animation: slideInLeft 0.8s ease-out forwards; }
-        .animate-slide-in-right { animation: slideInRight 0.8s ease-out forwards; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-pulse-slow { animation: pulse 3s ease-in-out infinite; }
-        .animate-scale-in { animation: scaleIn 0.6s ease-out forwards; }
-        
-        /* Scroll reveal classes - visible by default, animate on scroll */
-        .scroll-reveal {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        
-        /* Only hide initially if JavaScript is enabled and on desktop */
-        @media (min-width: 769px) {
-            .scroll-reveal:not(.revealed) {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-        }
-        
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .scroll-reveal-left {
-            opacity: 1;
-            transform: translateX(0);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        
-        @media (min-width: 769px) {
-            .scroll-reveal-left:not(.revealed) {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-        }
-        
-        .scroll-reveal-left.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .scroll-reveal-right {
-            opacity: 1;
-            transform: translateX(0);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        
-        @media (min-width: 769px) {
-            .scroll-reveal-right:not(.revealed) {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-        }
-        
-        .scroll-reveal-right.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        /* Staggered animation delays */
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
-        .stagger-4 { transition-delay: 0.4s; }
-        .stagger-5 { transition-delay: 0.5s; }
-        .stagger-6 { transition-delay: 0.6s; }
-        
-        /* Interactive hover effects */
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(107, 142, 90, 0.15);
-        }
-        
-        /* Gradient text animation */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--sage-green), var(--deep-sage), var(--lavender));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 5s ease infinite;
-        }
-        
-        /* Button ripple effect */
-        .btn-ripple {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-ripple::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .btn-ripple:active::after {
-            width: 300px;
-            height: 300px;
-        }
-        
-        /* Parallax effect */
-        .parallax-slow {
-            transition: transform 0.3s ease-out;
-        }
-        
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Enhanced button styles */
-        .btn-enhanced {
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(135, 169, 107, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-enhanced:hover {
-            box-shadow: 0 8px 24px rgba(135, 169, 107, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        .btn-enhanced::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .btn-enhanced:hover::before {
-            left: 100%;
-        }
-        
-        /* Accent borders */
-        .accent-border-left {
-            border-left: 4px solid var(--sage-green);
-            padding-left: 1.5rem;
-        }
-        
-        .accent-border-top {
-            border-top: 3px solid;
-            border-image: linear-gradient(90deg, var(--sage-green), var(--lavender)) 1;
-            padding-top: 1.5rem;
-        }
-        
-        /* Cursor follow effect (subtle) */
-        .cursor-glow {
-            position: relative;
-        }
-        
-        .cursor-glow::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(135, 169, 107, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.3s ease;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .cursor-glow:hover::before {
-            transform: translate(-50%, -50%) scale(1);
-        }
-        
-        /* Image gallery hover effects */
-        .image-gallery-item {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .image-gallery-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(135, 169, 107, 0.1) 0%, rgba(184, 169, 217, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .image-gallery-item:hover::after {
-            opacity: 1;
-        }
-        
-        /* Smooth image zoom */
-        .image-zoom {
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .image-zoom:hover {
-            transform: scale(1.1);
-        }
-        
-        /* Visual enhancements */
-        .service-card {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(135, 169, 107, 0.05) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-        
-        .service-card:hover::before {
-            opacity: 1;
-        }
-        
-        .price-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, rgba(135, 169, 107, 0.15), rgba(107, 142, 90, 0.15));
-            border: 1px solid rgba(135, 169, 107, 0.3);
-            border-radius: 9999px;
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-        
-        .decorative-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--sage-green);
-            opacity: 0.3;
-        }
-        
-        .metric-number {
-            font-size: 4rem;
-            line-height: 1;
-            background: linear-gradient(135deg, var(--sage-green), var(--deep-sage), var(--lavender));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 5s ease infinite;
-        }
-        
-        .progress-bar {
-            height: 4px;
-            background: rgba(135, 169, 107, 0.2);
-            border-radius: 9999px;
-            overflow: hidden;
-            margin-top: 1rem;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--sage-green), var(--deep-sage));
-            border-radius: 9999px;
-            transition: width 1s ease-out;
-        }
-        
-        .pull-quote {
-            position: relative;
-            padding: 2rem;
-            margin: 2rem 0;
-            background: linear-gradient(135deg, rgba(135, 169, 107, 0.1), rgba(184, 169, 217, 0.1));
-            border-left: 4px solid var(--sage-green);
-            border-radius: 1rem;
-            font-size: 1.25rem;
-            font-style: italic;
-            font-family: 'Cormorant Garamond', serif;
-        }
-        
-        .pull-quote::before {
-            content: '"';
-            position: absolute;
-            top: -0.5rem;
-            left: 1rem;
-            font-size: 4rem;
-            color: var(--sage-green);
-            opacity: 0.2;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .highlight-box {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(135, 169, 107, 0.1), rgba(184, 169, 217, 0.05));
-            border: 2px solid rgba(135, 169, 107, 0.2);
-            border-radius: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--sage-green), transparent);
-            margin: 3rem 0;
-            opacity: 0.3;
-        }
-        
-        .timeline-connector {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--sage-green), var(--lavender));
-            opacity: 0.3;
-            z-index: 0;
-        }
-        
-        .process-number {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .skill-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(135, 169, 107, 0.3);
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            margin: 0.25rem;
-        }
-        
-        .tech-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.375rem;
-            padding: 0.375rem 0.75rem;
-            background: rgba(135, 169, 107, 0.1);
-            border: 1px solid rgba(135, 169, 107, 0.2);
-            border-radius: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-    </style>
+    <link rel="stylesheet" href="css/site.css">
 </head>
 <body class="antialiased relative overflow-x-hidden flex flex-col min-h-screen">
 
-    <!-- Organic Background -->
-    <div class="bg-organic"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 border-b border-white/30 bg-white/60 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="text-lg font-['Playfair_Display'] font-medium text-[#3A3A3A] flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center text-white font-semibold text-sm shadow-lg group-hover:scale-110 transition-transform">
-                    MA
-                </div>
-                <span class="group-hover:text-[var(--sage-green)] transition-colors">Michelle Ackers</span>
+    <nav class="site-nav fixed top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="logo flex items-center gap-2 group text-white">
+                <img src="images/cornerstone-logo.png" alt="Cornerstone Devs" class="logo-img">
+                <span class="group-hover:text-[var(--color-accent)] transition-colors">Cornerstone Devs</span>
             </a>
             
-            <!-- Navigation Links -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--warm-gray)] font-['Inter']">
-                <a href="services.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Services</a>
-                <a href="portfolio.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">Portfolio</a>
-                <a href="about.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">About</a>
-                <a href="ai-consultation.html" class="hover:text-[var(--sage-green)] transition-colors duration-200">AI Consultation</a>
+            <div class="hidden md:flex items-center gap-10 link">
+                <a href="services.html" class="link">Services</a>
+                <a href="portfolio.html" class="link">Portfolio</a>
+                <a href="about.html" class="link">About</a>
+                <a href="process.html" class="link">Process</a>
+                <a href="tech.html" class="link">Tech</a>
+                <a href="ai-consultation.html" class="link">AI Consultation</a>
             </div>
 
-            <a href="discovery.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all hover:scale-105">
-                Book Discovery
-            </a>
+            <a href="discovery.html?v=3" class="hidden md:inline-flex cta">Book Discovery</a>
             
-            <button id="mobile-menu-button" class="md:hidden text-[var(--warm-gray)] hover:text-[var(--sage-green)]">
-                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 stroke-[1.5]"></i>
-                <i data-lucide="x" id="close-icon" class="w-6 h-6 stroke-[1.5] hidden"></i>
+            <button id="mobile-menu-button" class="md:hidden text-zinc-400 hover:text-white p-2" aria-label="Menu">
+                <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i>
+                <i data-lucide="x" id="close-icon" class="w-5 h-5 hidden"></i>
             </button>
         </div>
         
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-white/30 shadow-lg z-50">
-            <div class="flex flex-col px-6 py-6 gap-4">
-                <a href="services.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Services</a>
-                <a href="portfolio.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">Portfolio</a>
-                <a href="about.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">About</a>
-                <a href="ai-consultation.html" class="text-sm font-medium text-[var(--warm-gray)] hover:text-[var(--sage-green)] transition-colors">AI Consultation</a>
-                <a href="discovery.html" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-lg transition-all mt-2">
-                    Book Discovery
-                </a>
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden absolute top-16 left-0 right-0 py-4 px-6 z-50">
+            <div class="flex flex-col gap-3">
+                <a href="services.html" class="link py-2">Services</a>
+                <a href="portfolio.html" class="link py-2">Portfolio</a>
+                <a href="about.html" class="link py-2">About</a>
+                <a href="process.html" class="link py-2">Process</a>
+                <a href="tech.html" class="link py-2">Tech</a>
+                <a href="ai-consultation.html" class="link py-2">AI Consultation</a>
+                <a href="discovery.html?v=3" class="cta inline-flex mt-2 w-fit">Book Discovery</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content Area -->
-    <main class="relative z-10 flex-grow pt-20">
+    <main class="relative z-10 flex-grow pt-16">
         
-        <!-- HERO SECTION -->
-        <section class="flex items-center justify-center px-6 py-20 min-h-[calc(100vh-80px)] relative" style="position: relative;">
-            <!-- Decorative organic shapes -->
-            <div class="absolute top-20 right-10 w-64 h-64 bg-gradient-to-br from-[var(--lavender)]/20 to-[var(--blush-pink)]/20 organic-shape animate-float parallax-slow" style="z-index: 2;"></div>
-            <div class="absolute bottom-20 left-10 w-48 h-48 bg-gradient-to-br from-[var(--sage-green)]/20 to-[var(--lavender)]/20 organic-shape animate-float parallax-slow" style="animation-delay: 2s; z-index: 2;"></div>
-            <div class="absolute top-1/2 left-1/4 w-32 h-32 bg-gradient-to-br from-[var(--blush-pink)]/15 to-[var(--sage-green)]/15 organic-shape animate-float parallax-slow" style="animation-delay: 4s; border-radius: 70% 30% 40% 60% / 50% 60% 30% 70%; z-index: 2;"></div>
-            
-            <div class="max-w-6xl mx-auto w-full relative" style="z-index: 10; position: relative; background: transparent;">
-                <div class="animate-slide-up">
-                    <h1 class="text-6xl md:text-8xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8 leading-[1.1]">
-                        Building platforms <br>
-                        <span class="text-[var(--sage-green)]">with soul & purpose</span>
-                    </h1>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
-                        <div class="md:col-span-7">
-                            <p class="text-xl md:text-2xl text-[var(--warm-gray)] font-light leading-relaxed mb-10 font-['Cormorant_Garamond']">
-                                I weave technical mastery with intuitive design to create platforms that honor your mission. Service business websites, community platforms, payment infrastructure, e-commerce stores, course systems, and custom product development. Complete product builds from discovery to deployment that align with your vision and support your growth.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4 mb-6">
-                                <a href="discovery.html" class="inline-flex items-center justify-center px-10 py-5 text-base font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105 btn-ripple btn-enhanced">
-                                    Book Discovery Call
-                                </a>
-                                <a href="ai-consultation.html" class="inline-flex items-center justify-center px-10 py-5 text-base font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105 btn-ripple btn-enhanced">
-                                    Book AI Consultation
-                                </a>
-                                <a href="portfolio.html" class="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-[var(--sage-green)] border-2 border-[var(--sage-green)] rounded-full hover:bg-[var(--sage-green)]/10 transition-all hover:scale-105 btn-ripple">
-                                    View Portfolio
-                                </a>
-                            </div>
-                            <p class="text-sm text-[var(--warm-gray)] font-['Inter'] italic">For founders ready to invest in complete product development. Not template customization.</p>
-                        </div>
-                        <div class="md:col-span-5 hidden md:block">
-                            <div class="glass-panel p-8 rounded-3xl border-l-4 border-l-[var(--sage-green)] shadow-xl">
-                                <p class="text-lg font-['Cormorant_Garamond'] text-[#3A3A3A] mb-6 italic leading-relaxed">"I build products that honor your mission. Technical infrastructure woven with intention, creating platforms that become extensions of your purpose."</p>
-                                <div class="flex items-center gap-3">
-                                    <div class="h-px w-12 bg-[var(--sage-green)]/30"></div>
-                                    <span class="text-xs text-[var(--warm-gray)] uppercase tracking-widest font-['Inter']">Michelle Ackers</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Hero -->
+        <section class="px-6 py-24 md:py-32 min-h-[85vh] flex items-center">
+            <div class="max-w-4xl mx-auto w-full">
+                <div class="hero-logo-video-wrap mb-6 animate-fade-in">
+                    <video class="hero-logo-video" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="images/logo-animated.mp4" type="video/mp4">
+                    </video>
                 </div>
+                <p class="label mb-4 animate-fade-in">Full-Stack Developers · Product Engineers</p>
+                <h1 class="heading-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-6 animate-slide-up">
+                    Build the product.<br>
+                    <span class="gradient-text">Not just the platform.</span>
+                </h1>
+                <p class="body-muted text-lg md:text-xl max-w-2xl mb-10 animate-slide-up" style="animation-delay: 0.1s">
+                    Full-stack development and product engineering: APIs, databases, front-ends, payments, and deployment. Custom web apps, community platforms, e-commerce, and SaaS from discovery to launch.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 animate-slide-up" style="animation-delay: 0.2s">
+                    <a href="discovery.html?v=3" class="btn-primary">Book Discovery Call</a>
+                    <a href="ai-consultation.html" class="btn-secondary">AI Consultation</a>
+                    <a href="portfolio.html" class="btn-secondary">View Portfolio</a>
+                </div>
+                <p class="text-xs text-zinc-500 mt-6 font-mono">Projects from $2,000 USD. No template work.</p>
             </div>
         </section>
 
-        <!-- WHAT I BUILD SECTION -->
-        <section class="py-24 px-6 relative" style="position: relative;">
-            <div class="max-w-7xl mx-auto relative" style="z-index: 10; background: transparent;">
-                <div class="mb-16 text-center">
-                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block animate-pulse-slow">Capabilities</span>
-                    <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">
-                        What I <span class="gradient-text">Create</span>
-                    </h2>
-                    <p class="text-[var(--warm-gray)] text-lg max-w-3xl mx-auto font-light font-['Cormorant_Garamond']">Complete platforms and products from discovery to deployment. Built with intention, designed for growth.</p>
-                </div>
+        <hr class="section-rule border-0 max-w-7xl mx-auto" />
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Community Platforms -->
-                    <div class="glass-panel service-card p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group scroll-reveal stagger-1 hover-lift cursor-glow relative">
-                        <div class="absolute top-4 right-4 decorative-dot"></div>
-                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
-                            <i data-lucide="users" class="w-10 h-10 stroke-[1.5]"></i>
-                        </div>
-                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Community Platforms</h3>
-                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
-                            Member management, content delivery, subscription integration. White-label community infrastructure that nurtures connection and growth.
-                        </p>
-                        <div class="mb-4">
-                            <span class="price-badge text-[var(--sage-green)]">Starting at $8,000 USD</span>
-                        </div>
-                        <a href="services.html#community" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1 font-medium">
-                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-
-                    <!-- Service Business Websites -->
-                    <div class="glass-panel service-card p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group scroll-reveal stagger-2 hover-lift cursor-glow relative">
-                        <div class="absolute top-4 right-4 decorative-dot"></div>
-                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
-                            <i data-lucide="globe" class="w-10 h-10 stroke-[1.5]"></i>
-                        </div>
-                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Service Business Websites</h3>
-                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
-                            Professional multi-page websites for coaches, trainers, consultants, therapists. Services pages, booking integration, SEO optimized.
-                        </p>
-                        <div class="mb-4">
-                            <span class="price-badge text-[var(--sage-green)]">Starting at $2,000 USD</span>
-                        </div>
-                        <a href="services.html#service-websites" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1 font-medium">
-                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-
-                    <!-- Payment Infrastructure -->
-                    <div class="glass-panel service-card p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group scroll-reveal stagger-3 hover-lift cursor-glow relative">
-                        <div class="absolute top-4 right-4 decorative-dot" style="background: var(--lavender);"></div>
-                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
-                            <i data-lucide="credit-card" class="w-10 h-10 stroke-[1.5]"></i>
-                        </div>
-                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Payment Infrastructure</h3>
-                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
-                            Stripe integration, subscription billing, invoice generation. Revenue infrastructure that flows seamlessly and supports your growth.
-                        </p>
-                        <div class="mb-4">
-                            <span class="price-badge text-[var(--sage-green)]">Starting at $5,000 USD</span>
-                        </div>
-                        <a href="services.html#payment" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1 font-medium">
-                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-
-                    <!-- E-commerce Platforms -->
-                    <div class="glass-panel service-card p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group scroll-reveal stagger-4 hover-lift cursor-glow relative">
-                        <div class="absolute top-4 right-4 decorative-dot" style="background: var(--blush-pink);"></div>
-                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--blush-pink)] to-[#E8A8A8] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
-                            <i data-lucide="shopping-cart" class="w-10 h-10 stroke-[1.5]"></i>
-                        </div>
-                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">E-commerce Platforms</h3>
-                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
-                            Product management, checkout systems, digital downloads. Complete stores built with care and attention to your brand.
-                        </p>
-                        <div class="mb-4">
-                            <span class="price-badge text-[var(--sage-green)]">Starting at $5,000 USD</span>
-                        </div>
-                        <a href="services.html#ecommerce" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1 font-medium">
-                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-
-                    <!-- Course Platforms -->
-                    <div class="glass-panel service-card p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group scroll-reveal stagger-5 hover-lift cursor-glow relative">
-                        <div class="absolute top-4 right-4 decorative-dot" style="background: var(--lavender);"></div>
-                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--sage-green)] to-[var(--lavender)] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
-                            <i data-lucide="book-open" class="w-10 h-10 stroke-[1.5]"></i>
-                        </div>
-                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Course Platforms</h3>
-                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
-                            Learning management systems, student tracking, progress monitoring. Platforms that honor the learning journey.
-                        </p>
-                        <div class="mb-4">
-                            <span class="price-badge text-[var(--sage-green)]">Starting at $8,000 USD</span>
-                        </div>
-                        <a href="services.html#course" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1 font-medium">
-                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-
-                    <!-- Custom Products -->
-                    <div class="glass-panel service-card p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group scroll-reveal stagger-6 hover-lift cursor-glow relative">
-                        <div class="absolute top-4 right-4 decorative-dot" style="background: var(--blush-pink);"></div>
-                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--lavender)] to-[var(--blush-pink)] flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform">
-                            <i data-lucide="sparkles" class="w-10 h-10 stroke-[1.5]"></i>
-                        </div>
-                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Custom Products</h3>
-                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
-                            SaaS MVPs, booking systems, client portals. Technical products tailored to your unique vision and needs.
-                        </p>
-                        <div class="mb-4">
-                            <span class="price-badge text-[var(--sage-green)]">Starting at $10,000 USD</span>
-                        </div>
-                        <a href="services.html#custom" class="text-[var(--sage-green)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1 font-medium">
-                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-
-                    <!-- Software -->
-                    <div class="glass-panel p-8 rounded-3xl hover:shadow-2xl transition-all hover:-translate-y-2 group opacity-75">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--warm-gray)]/30 to-[var(--warm-gray)]/50 flex items-center justify-center mb-6 text-[var(--warm-gray)] shadow-lg">
-                            <i data-lucide="cpu" class="w-7 h-7 stroke-[1.5]"></i>
-                        </div>
-                        <h3 class="text-2xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-4">Software</h3>
-                        <p class="text-base text-[var(--warm-gray)] leading-relaxed mb-6 font-light font-['Cormorant_Garamond']">
-                            Custom software solutions built for specific use cases. Details coming soon.
-                        </p>
-                        <p class="text-sm text-[var(--warm-gray)] font-['Inter'] font-medium mb-4">Coming soon</p>
-                        <a href="software.html" class="text-[var(--warm-gray)] text-sm font-['Inter'] hover:underline inline-flex items-center gap-1">
-                            View section <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- NOT READY FOR FULL BUILD SECTION -->
-        <section class="py-24 px-6 relative bg-white/40">
+        <!-- What We Build -->
+        <section class="py-20 md:py-28 px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="max-w-4xl mx-auto text-center mb-12 scroll-reveal">
-                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block animate-pulse-slow">Getting Started</span>
-                    <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">
-                        Not Ready for a Full <span class="gradient-text">Platform Build</span>?
-                    </h2>
-                    <p class="text-xl text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] leading-relaxed mb-8">
-                        Start with an AI Integration Consultation to identify automation opportunities in your business. Get specific recommendations and an implementation roadmap in just 1-2 hours.
-                    </p>
-                </div>
+                <p class="label mb-3">Capabilities</p>
+                <h2 class="heading-2 text-3xl md:text-4xl lg:text-5xl text-white mb-4">What We Build</h2>
+                <p class="body-muted text-lg max-w-2xl mb-14">End-to-end product development: architecture, implementation, and deployment.</p>
 
-                <div class="pull-quote max-w-3xl mx-auto mb-8">
-                    <p class="text-center">Not ready for a full platform build? Start with focused AI automation consultation.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <a href="services.html#community" class="card p-6 block scroll-reveal group stagger-1">
+                        <div class="card-icon lime mb-5"><i data-lucide="users" class="w-5 h-5"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2 font-['Space_Grotesk']">Community Platforms</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-4">Member management, content delivery, subscriptions. White-label community infrastructure.</p>
+                        <span class="badge badge-accent">From $8,000 USD</span>
+                    </a>
+                    <a href="services.html#service-websites" class="card p-6 block scroll-reveal group stagger-2">
+                        <div class="card-icon cyan mb-5"><i data-lucide="globe" class="w-5 h-5"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2 font-['Space_Grotesk']">Service Business Sites</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-4">Multi-page sites for coaches, consultants, practitioners. Services, booking, SEO.</p>
+                        <span class="badge badge-cyan">From $2,000 USD</span>
+                    </a>
+                    <a href="services.html#payment" class="card p-6 block scroll-reveal group stagger-3">
+                        <div class="card-icon violet mb-5"><i data-lucide="credit-card" class="w-5 h-5"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2 font-['Space_Grotesk']">Payment Infrastructure</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-4">Stripe, subscriptions, invoicing. Revenue systems that scale.</p>
+                        <span class="badge badge-violet">From $5,000 USD</span>
+                    </a>
+                    <a href="services.html#ecommerce" class="card p-6 block scroll-reveal group stagger-4">
+                        <div class="card-icon fuchsia mb-5"><i data-lucide="shopping-cart" class="w-5 h-5"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2 font-['Space_Grotesk']">E-commerce</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-4">Product catalog, checkout, digital downloads. Full store builds.</p>
+                        <span class="badge badge-fuchsia">From $5,000 USD</span>
+                    </a>
+                    <a href="services.html#course" class="card p-6 block scroll-reveal group stagger-5">
+                        <div class="card-icon coral mb-5"><i data-lucide="book-open" class="w-5 h-5"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2 font-['Space_Grotesk']">Course &amp; LMS</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-4">Learning management, progress tracking, student access.</p>
+                        <span class="badge badge-accent">From $8,000 USD</span>
+                    </a>
+                    <a href="services.html#custom" class="card p-6 block scroll-reveal group stagger-6">
+                        <div class="card-icon cyan mb-5"><i data-lucide="code" class="w-5 h-5"></i></div>
+                        <h3 class="text-lg font-semibold text-white mb-2 font-['Space_Grotesk']">Custom Products</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-4">SaaS MVPs, booking systems, client portals. Built to spec.</p>
+                        <span class="badge badge-cyan">From $10,000 USD</span>
+                    </a>
                 </div>
-
-                <div class="glass-panel p-8 rounded-3xl max-w-3xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        <div>
-                            <h3 class="text-lg font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">What</h3>
-                            <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Focused consultation to identify AI automation opportunities</p>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">Who</h3>
-                            <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Business owners with manual workflows ready to explore AI</p>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">Investment</h3>
-                            <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">$250/hour (most clients need 1-2 sessions)</p>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-['Playfair_Display'] font-semibold text-[#2A2A2A] mb-2">Outcome</h3>
-                            <p class="text-[var(--warm-gray)] font-light font-['Cormorant_Garamond']">Actionable roadmap with tool recommendations and implementation priorities</p>
-                        </div>
-                    </div>
-                    <div class="text-center scroll-reveal">
-                        <a href="ai-consultation.html" class="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105 btn-ripple">
-                            Book AI Consultation
-                        </a>
-                    </div>
-                </div>
+                <p class="mt-8"><a href="software.html" class="text-sm text-zinc-500 hover:text-zinc-400 font-mono inline-flex items-center gap-1">Software &amp; automation <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a></p>
             </div>
         </section>
 
-        <!-- WHO THIS IS FOR SECTION -->
-        <section class="py-24 px-6 relative bg-white/40">
-            <div class="section-divider"></div>
+        <!-- AI Consultation strip -->
+        <section class="py-16 md:py-20 px-6 border-y border-zinc-800/80 section-tint-violet">
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="label mb-3">Getting Started</p>
+                <h2 class="heading-2 text-2xl md:text-3xl text-white mb-4">Not Ready for a Full Build?</h2>
+                <p class="body-muted mb-8 max-w-xl mx-auto">AI Integration Consultation: identify automation opportunities and get an implementation roadmap in 1 to 2 hours.</p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm text-zinc-400 mb-8">
+                    <span class="font-mono">$125/hour</span>
+                    <span>·</span>
+                    <span>1 to 2 sessions typical</span>
+                </div>
+                <a href="ai-consultation.html" class="btn-primary">Book AI Consultation</a>
+            </div>
+        </section>
+
+        <!-- Who This Is For / Not For -->
+        <section class="py-20 md:py-28 px-6 section-tint-cyan">
             <div class="max-w-7xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                     <div>
-                        <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">For You</span>
-                        <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8">Who This Is For</h2>
-                        <ul class="space-y-4 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">
-                            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/50 transition-colors">
-                                <i data-lucide="heart" class="w-6 h-6 text-[var(--blush-pink)] mt-0.5 flex-shrink-0"></i>
-                                <span>Founders ready to exit 9-to-5 and launch mission-driven business</span>
-                            </li>
-                            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/50 transition-colors">
-                                <i data-lucide="heart" class="w-6 h-6 text-[var(--blush-pink)] mt-0.5 flex-shrink-0"></i>
-                                <span>Coaches and educators building membership or course businesses</span>
-                            </li>
-                            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/50 transition-colors">
-                                <i data-lucide="heart" class="w-6 h-6 text-[var(--blush-pink)] mt-0.5 flex-shrink-0"></i>
-                                <span>Wellness practitioners creating online programs</span>
-                            </li>
-                            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/50 transition-colors">
-                                <i data-lucide="heart" class="w-6 h-6 text-[var(--blush-pink)] mt-0.5 flex-shrink-0"></i>
-                                <span>Consultants productizing their services</span>
-                            </li>
-                            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/50 transition-colors">
-                                <i data-lucide="heart" class="w-6 h-6 text-[var(--blush-pink)] mt-0.5 flex-shrink-0"></i>
-                                <span>Anyone needing technical product built to generate revenue</span>
-                            </li>
+                        <p class="label mb-3">For</p>
+                        <h2 class="heading-2 text-2xl md:text-3xl text-white mb-8">Who This Is For</h2>
+                        <ul class="space-y-1">
+                            <li class="list-item"><i data-lucide="check" class="list-item-icon"></i><span>Founders building product-led or membership businesses</span></li>
+                            <li class="list-item"><i data-lucide="check" class="list-item-icon"></i><span>Teams needing custom software, not templates</span></li>
+                            <li class="list-item"><i data-lucide="check" class="list-item-icon"></i><span>Coaches and educators with course or community products</span></li>
+                            <li class="list-item"><i data-lucide="check" class="list-item-icon"></i><span>Consultants productizing services with tools or portals</span></li>
+                            <li class="list-item"><i data-lucide="check" class="list-item-icon"></i><span>Anyone with a clear product vision and budget for build</span></li>
                         </ul>
                     </div>
                     <div>
-                        <span class="text-[var(--warm-gray)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Not For</span>
-                        <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-8">Who This Is Not For</h2>
-                        <ul class="space-y-4 text-[var(--warm-gray)] font-light font-['Cormorant_Garamond'] text-lg">
-                            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/30 transition-colors">
-                                <i data-lucide="x" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
-                                <span>Businesses needing website builds or brochure sites</span>
-                            </li>
-                            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/30 transition-colors">
-                                <i data-lucide="x" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
-                                <span>People wanting template customization</span>
-                            </li>
-                            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/30 transition-colors">
-                                <i data-lucide="x" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
-                                <span>Businesses optimizing existing operations</span>
-                            </li>
-                            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/30 transition-colors">
-                                <i data-lucide="x" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
-                                <span>Projects under $2,000 USD budget</span>
-                            </li>
-                            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/30 transition-colors">
-                                <i data-lucide="x" class="w-6 h-6 text-[var(--warm-gray)]/50 mt-0.5 flex-shrink-0"></i>
-                                <span>People wanting strategy consulting, not product building</span>
-                            </li>
+                        <p class="label mb-3">Not For</p>
+                        <h2 class="heading-2 text-2xl md:text-3xl text-white mb-8">Who This Is Not For</h2>
+                        <ul class="space-y-1">
+                            <li class="list-item"><i data-lucide="x" class="list-item-icon list-item-icon-muted"></i><span>Brochure or marketing-only sites</span></li>
+                            <li class="list-item"><i data-lucide="x" class="list-item-icon list-item-icon-muted"></i><span>Template or theme customization</span></li>
+                            <li class="list-item"><i data-lucide="x" class="list-item-icon list-item-icon-muted"></i><span>Strategy-only or ops consulting without build</span></li>
+                            <li class="list-item"><i data-lucide="x" class="list-item-icon list-item-icon-muted"></i><span>Projects under $2,000 USD</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="section-divider"></div>
         </section>
 
-        <!-- RESULTS SECTION -->
-        <section class="py-24 px-6 relative" style="position: relative;">
-            <div class="max-w-7xl mx-auto relative" style="z-index: 10; background: transparent;">
-                <div class="mb-16 text-center">
-                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Outcomes</span>
-                    <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">Results</h2>
-                    <p class="text-[var(--warm-gray)] text-lg max-w-3xl mx-auto font-light font-['Cormorant_Garamond']">Measurable outcomes from platform builds.</p>
-                </div>
+        <!-- Results -->
+        <section class="py-20 md:py-28 px-6">
+            <div class="max-w-7xl mx-auto">
+                <p class="label mb-3">Outcomes</p>
+                <h2 class="heading-2 text-3xl md:text-4xl text-white mb-4">Results</h2>
+                <p class="body-muted text-lg mb-14">Representative outcomes from product builds.</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="glass-panel p-8 rounded-3xl text-center relative overflow-hidden" style="background: linear-gradient(135deg, rgba(135, 169, 107, 0.1), rgba(107, 142, 90, 0.05)); border: 2px solid rgba(135, 169, 107, 0.2);">
-                        <div class="absolute top-4 right-4">
-                            <i data-lucide="users" class="w-8 h-8 text-[var(--sage-green)] opacity-30"></i>
-                        </div>
-                        <div class="metric-number mb-3" style="font-size: 4.5rem;">500+</div>
-                        <h3 class="text-lg font-medium text-[#2A2A2A] mb-3 font-['Inter'] flex items-center justify-center gap-2">
-                            <i data-lucide="users" class="w-5 h-5 text-[var(--sage-green)]"></i>
-                            Members
-                        </h3>
-                        <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond'] mb-4">Community platform supporting 500+ members, generating $15k monthly recurring revenue</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 85%;"></div>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card p-6 text-center scroll-reveal">
+                        <div class="metric text-4xl md:text-5xl mb-2">500+</div>
+                        <h3 class="text-sm font-medium text-white mb-1">Members</h3>
+                        <p class="text-xs text-zinc-500">Community platform, $15k MRR</p>
                     </div>
-                    <div class="glass-panel p-8 rounded-3xl text-center relative overflow-hidden" style="background: linear-gradient(135deg, rgba(184, 169, 217, 0.1), rgba(155, 139, 196, 0.05)); border: 2px solid rgba(184, 169, 217, 0.2);">
-                        <div class="absolute top-4 right-4">
-                            <i data-lucide="dollar-sign" class="w-8 h-8 text-[var(--lavender)] opacity-30"></i>
-                        </div>
-                        <div class="metric-number mb-3" style="font-size: 4.5rem; background: linear-gradient(135deg, var(--lavender), #9B8BC4, var(--blush-pink)); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$50k+</div>
-                        <h3 class="text-lg font-medium text-[#2A2A2A] mb-3 font-['Inter'] flex items-center justify-center gap-2">
-                            <i data-lucide="dollar-sign" class="w-5 h-5 text-[var(--lavender)]"></i>
-                            Monthly Revenue
-                        </h3>
-                        <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond'] mb-4">Payment infrastructure processing $50k+ monthly revenue with automated billing</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 90%; background: linear-gradient(90deg, var(--lavender), #9B8BC4);"></div>
-                        </div>
+                    <div class="card p-6 text-center scroll-reveal stagger-1">
+                        <div class="metric text-4xl md:text-5xl mb-2">$50k+</div>
+                        <h3 class="text-sm font-medium text-white mb-1">Monthly Revenue</h3>
+                        <p class="text-xs text-zinc-500">Payment infrastructure, automated billing</p>
                     </div>
-                    <div class="glass-panel p-8 rounded-3xl text-center relative overflow-hidden" style="background: linear-gradient(135deg, rgba(244, 194, 194, 0.1), rgba(232, 168, 168, 0.05)); border: 2px solid rgba(244, 194, 194, 0.2);">
-                        <div class="absolute top-4 right-4">
-                            <i data-lucide="graduation-cap" class="w-8 h-8 text-[var(--blush-pink)] opacity-30"></i>
-                        </div>
-                        <div class="metric-number mb-3" style="font-size: 4.5rem; background: linear-gradient(135deg, var(--blush-pink), #E8A8A8, var(--sage-green)); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">1000+</div>
-                        <h3 class="text-lg font-medium text-[#2A2A2A] mb-3 font-['Inter'] flex items-center justify-center gap-2">
-                            <i data-lucide="graduation-cap" class="w-5 h-5 text-[var(--blush-pink)]"></i>
-                            Students
-                        </h3>
-                        <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond'] mb-4">Course platform delivering content to 1000+ students with progress tracking</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 95%; background: linear-gradient(90deg, var(--blush-pink), #E8A8A8);"></div>
-                        </div>
+                    <div class="card p-6 text-center scroll-reveal stagger-2">
+                        <div class="metric text-4xl md:text-5xl mb-2">1000+</div>
+                        <h3 class="text-sm font-medium text-white mb-1">Students</h3>
+                        <p class="text-xs text-zinc-500">Course platform, progress tracking</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PROCESS SECTION -->
-        <section class="py-24 px-6 relative bg-white/40" style="position: relative;">
-            <div class="max-w-7xl mx-auto relative" style="z-index: 10; background: transparent;">
-                <div class="mb-16 text-center">
-                    <span class="text-[var(--sage-green)] font-['Inter'] text-sm uppercase tracking-wider mb-4 block">Methodology</span>
-                    <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">Process</h2>
-                    <p class="text-[var(--warm-gray)] text-lg max-w-3xl mx-auto font-light font-['Cormorant_Garamond']">Four phases from discovery to launch, woven with intention.</p>
-                </div>
+        <!-- Process -->
+        <section class="py-20 md:py-28 px-6 border-t border-zinc-800/80">
+            <div class="max-w-7xl mx-auto">
+                <p class="label mb-3">Methodology</p>
+                <h2 class="heading-2 text-3xl md:text-4xl text-white mb-4">Process</h2>
+                <p class="body-muted text-lg mb-14">Discovery → Design → Build → Launch.</p>
 
-                <div class="relative">
-                    <div class="timeline-connector hidden lg:block"></div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-                        <div class="glass-panel p-8 rounded-3xl text-center relative z-10 hover:shadow-xl transition-all">
-                            <div class="process-number mx-auto mb-4 bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)]">01</div>
-                            <div class="mb-4">
-                                <i data-lucide="search" class="w-8 h-8 text-[var(--sage-green)] mx-auto"></i>
-                            </div>
-                            <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Discovery</h3>
-                            <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Technical requirements, business model validation, scope definition</p>
-                        </div>
-                        <div class="glass-panel p-8 rounded-3xl text-center relative z-10 hover:shadow-xl transition-all">
-                            <div class="process-number mx-auto mb-4 bg-gradient-to-br from-[var(--lavender)] to-[#9B8BC4]">02</div>
-                            <div class="mb-4">
-                                <i data-lucide="palette" class="w-8 h-8 text-[var(--lavender)] mx-auto"></i>
-                            </div>
-                            <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Design</h3>
-                            <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Platform architecture, feature mapping, integration planning</p>
-                        </div>
-                        <div class="glass-panel p-8 rounded-3xl text-center relative z-10 hover:shadow-xl transition-all">
-                            <div class="process-number mx-auto mb-4 bg-gradient-to-br from-[var(--blush-pink)] to-[#E8A8A8]">03</div>
-                            <div class="mb-4">
-                                <i data-lucide="code" class="w-8 h-8 text-[var(--blush-pink)] mx-auto"></i>
-                            </div>
-                            <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Build</h3>
-                            <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Development, testing, iteration</p>
-                        </div>
-                        <div class="glass-panel p-8 rounded-3xl text-center relative z-10 hover:shadow-xl transition-all">
-                            <div class="process-number mx-auto mb-4 bg-gradient-to-br from-[var(--sage-green)] to-[var(--deep-sage)]">04</div>
-                            <div class="mb-4">
-                                <i data-lucide="rocket" class="w-8 h-8 text-[var(--sage-green)] mx-auto"></i>
-                            </div>
-                            <h3 class="text-xl font-medium text-[#2A2A2A] mb-3 font-['Playfair_Display']">Launch</h3>
-                            <p class="text-[var(--warm-gray)] text-sm font-light font-['Cormorant_Garamond']">Deployment, training, handoff</p>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card p-6 text-center group">
+                        <span class="step-num s1 text-3xl block mb-3">01</span>
+                        <i data-lucide="search" class="w-8 h-8 text-zinc-500 mx-auto mb-3"></i>
+                        <h3 class="text-base font-semibold text-white mb-2">Discovery</h3>
+                        <p class="text-sm text-zinc-500">Requirements, scope, validation</p>
+                    </div>
+                    <div class="card p-6 text-center group">
+                        <span class="step-num s2 text-3xl block mb-3">02</span>
+                        <i data-lucide="layout" class="w-8 h-8 text-zinc-500 mx-auto mb-3"></i>
+                        <h3 class="text-base font-semibold text-white mb-2">Design</h3>
+                        <p class="text-sm text-zinc-500">Architecture, features, integrations</p>
+                    </div>
+                    <div class="card p-6 text-center group">
+                        <span class="step-num s3 text-3xl block mb-3">03</span>
+                        <i data-lucide="code" class="w-8 h-8 text-zinc-500 mx-auto mb-3"></i>
+                        <h3 class="text-base font-semibold text-white mb-2">Build</h3>
+                        <p class="text-sm text-zinc-500">Development, testing, iteration</p>
+                    </div>
+                    <div class="card p-6 text-center group">
+                        <span class="step-num s4 text-3xl block mb-3">04</span>
+                        <i data-lucide="rocket" class="w-8 h-8 text-zinc-500 mx-auto mb-3"></i>
+                        <h3 class="text-base font-semibold text-white mb-2">Launch</h3>
+                        <p class="text-sm text-zinc-500">Deploy, train, handoff</p>
                     </div>
                 </div>
+                <p class="mt-8 text-center"><a href="process.html" class="text-sm text-zinc-500 hover:text-[var(--color-accent)] font-mono">Full process →</a></p>
             </div>
         </section>
 
-        <!-- CTA SECTION -->
-        <section class="py-24 px-6 relative">
-            <div class="max-w-4xl mx-auto text-center scroll-reveal">
-                <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-semibold text-[#2A2A2A] tracking-tight mb-6">
-                    Ready to Build Your <span class="gradient-text">Platform</span>?
-                </h2>
-                <p class="text-[var(--warm-gray)] text-lg mb-8 font-light font-['Cormorant_Garamond'] max-w-2xl mx-auto">Book a discovery call for projects starting at $2,000 USD. For founders ready to invest in complete product development.</p>
-                <a href="discovery.html" class="inline-flex items-center justify-center px-10 py-5 text-sm font-medium text-white bg-gradient-to-r from-[var(--sage-green)] to-[var(--deep-sage)] rounded-full hover:shadow-xl transition-all hover:scale-105 btn-ripple">
-                    Book Discovery Call
-                </a>
+        <!-- CTA -->
+        <section class="py-24 md:py-32 px-6 cta-section">
+            <div class="max-w-2xl mx-auto text-center scroll-reveal">
+                <h2 class="heading-2 text-3xl md:text-4xl text-white mb-4">Ready to Build?</h2>
+                <p class="body-muted mb-8">Discovery call for projects from $2,000 USD. Full-stack product development, not template work.</p>
+                <a href="discovery.html?v=3" class="btn-primary">Book Discovery Call</a>
             </div>
         </section>
-
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/30 bg-white/60 py-12 mt-auto">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-sm font-['Inter'] text-[var(--warm-gray)]">
-                © 2025 Michelle Ackers. All rights reserved.
-            </div>
-            <div class="flex gap-6 text-sm font-['Inter'] text-[var(--warm-gray)]">
-                <a href="https://www.instagram.com/michelleackers" target="_blank" class="hover:text-[var(--sage-green)] transition-colors">Instagram</a>
-                <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[var(--sage-green)] animate-pulse"></span> Available for Projects</span>
+    <footer class="border-t border-zinc-800 py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-xs text-zinc-500 font-mono">© 2025 Cornerstone Developers</div>
+            <div class="flex gap-6 text-xs text-zinc-500">
+                <a href="https://www.instagram.com/michelleackers" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-accent)] transition-colors">Instagram</a>
+                <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span> Available for projects</span>
             </div>
         </div>
     </footer>
@@ -928,210 +267,38 @@
     <script>
         lucide.createIcons();
         
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const closeIcon = document.getElementById('close-icon');
+        var mobileMenuButton = document.getElementById('mobile-menu-button');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var menuIcon = document.getElementById('menu-icon');
+        var closeIcon = document.getElementById('close-icon');
         
-        if (mobileMenuButton) {
-            mobileMenuButton.addEventListener('click', () => {
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
-                menuIcon.classList.toggle('hidden');
-                closeIcon.classList.toggle('hidden');
+                if (menuIcon) menuIcon.classList.toggle('hidden');
+                if (closeIcon) closeIcon.classList.toggle('hidden');
             });
-            
-            // Close menu when clicking on a link
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
+            var links = mobileMenu.querySelectorAll('a');
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function() {
                     mobileMenu.classList.add('hidden');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
+                    if (menuIcon) menuIcon.classList.remove('hidden');
+                    if (closeIcon) closeIcon.classList.add('hidden');
                 });
-            });
+            }
         }
         
-        // Scroll reveal animations - with mobile fix
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) entry.target.classList.add('revealed');
             });
-        }, observerOptions);
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
         
-        // On mobile, reveal all elements immediately to prevent blank content
         if (window.innerWidth <= 768) {
-            document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right').forEach(el => {
-                el.classList.add('revealed');
-            });
+            document.querySelectorAll('.scroll-reveal').forEach(function(el) { el.classList.add('revealed'); });
         } else {
-            // On desktop, use intersection observer
-            document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right').forEach(el => {
-                observer.observe(el);
-            });
+            document.querySelectorAll('.scroll-reveal').forEach(function(el) { observer.observe(el); });
         }
-        
-        // Parallax effect for hero shapes (desktop only)
-        if (window.innerWidth > 768) {
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const parallaxElements = document.querySelectorAll('.parallax-slow');
-                parallaxElements.forEach((el, index) => {
-                    const speed = 0.3 + (index * 0.1);
-                    el.style.transform = `translateY(${scrolled * speed}px)`;
-                });
-            });
-        }
-        
-        // Smooth reveal for hero content
-        window.addEventListener('load', () => {
-            const heroContent = document.querySelector('.animate-slide-up');
-            if (heroContent) {
-                heroContent.style.opacity = '0';
-                heroContent.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                    heroContent.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-                    heroContent.style.opacity = '1';
-                    heroContent.style.transform = 'translateY(0)';
-                }, 100);
-            }
-        });
-        
-        // Add ripple effect to buttons
-        document.querySelectorAll('.btn-ripple, a[href*="discovery"], a[href*="portfolio"]').forEach(button => {
-            if (!button.classList.contains('btn-ripple')) {
-                button.classList.add('btn-ripple');
-            }
-        });
-        
-        // Enhanced hover effects for service cards
-        document.querySelectorAll('.glass-panel').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-            });
-        });
-        
-        // #region agent log - Image loading debug
-        (function() {
-            function logDebug(data) {
-                const payload = {
-                    timestamp: Date.now(),
-                    location: 'index.html:image-debug',
-                    ...data,
-                    sessionId: 'debug-session',
-                    runId: 'image-check-2'
-                };
-                console.log('🔍 IMAGE DEBUG:', payload);
-                fetch('http://127.0.0.1:7243/ingest/e3f17d01-c1d5-4823-b53d-2c0630f5091e', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(payload)
-                }).catch(() => {});
-            }
-            
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    const images = document.querySelectorAll('img[src*="images/"]');
-                    console.log('🔍 Found', images.length, 'background images');
-                    logDebug({message: 'Found background images', data: {count: images.length}});
-                    
-                    if (images.length === 0) {
-                        console.error('❌ NO IMAGES FOUND!');
-                        logDebug({hypothesisId: 'D', message: 'NO IMAGES FOUND IN DOM', data: {}});
-                        return;
-                    }
-                    
-                    images.forEach((img, idx) => {
-                        const imgId = img.id || `img-${idx}`;
-                        console.log(`🔍 Checking ${imgId}:`, img.src);
-                        
-                        logDebug({hypothesisId: 'C', message: `Image ${idx} src check`, data: {
-                            id: imgId,
-                            src: img.src,
-                            naturalWidth: img.naturalWidth,
-                            naturalHeight: img.naturalHeight,
-                            complete: img.complete,
-                            loaded: img.complete && img.naturalWidth > 0
-                        }});
-                        
-                        const checkImage = () => {
-                            const rect = img.getBoundingClientRect();
-                            const styles = window.getComputedStyle(img);
-                            const parent = img.parentElement;
-                            const parentStyles = parent ? window.getComputedStyle(parent) : null;
-                            const grandparent = parent ? parent.parentElement : null;
-                            const grandparentStyles = grandparent ? window.getComputedStyle(grandparent) : null;
-                            
-                            const data = {
-                                id: imgId,
-                                src: img.src,
-                                width: rect.width,
-                                height: rect.height,
-                                naturalWidth: img.naturalWidth,
-                                naturalHeight: img.naturalHeight,
-                                imgOpacity: styles.opacity,
-                                imgVisibility: styles.visibility,
-                                imgDisplay: styles.display,
-                                imgZIndex: styles.zIndex,
-                                imgPosition: styles.position,
-                                top: rect.top,
-                                left: rect.left,
-                                inViewport: rect.top < window.innerHeight && rect.bottom > 0 && rect.left < window.innerWidth && rect.right > 0,
-                                viewportWidth: window.innerWidth,
-                                viewportHeight: window.innerHeight
-                            };
-                            
-                            if (parentStyles) {
-                                data.parentOpacity = parentStyles.opacity;
-                                data.parentVisibility = parentStyles.visibility;
-                                data.parentDisplay = parentStyles.display;
-                                data.parentZIndex = parentStyles.zIndex;
-                                data.parentPosition = parentStyles.position;
-                            }
-                            
-                            if (grandparentStyles) {
-                                data.grandparentOpacity = grandparentStyles.opacity;
-                                data.grandparentVisibility = grandparentStyles.visibility;
-                                data.grandparentDisplay = grandparentStyles.display;
-                                data.grandparentZIndex = grandparentStyles.zIndex;
-                            }
-                            
-                            console.log(`🔍 ${imgId} styles:`, data);
-                            logDebug({hypothesisId: 'A', message: `Image ${idx} computed styles`, data: data});
-                        };
-                        
-                        if (img.complete && img.naturalWidth > 0) {
-                            checkImage();
-                        } else {
-                            img.onload = () => {
-                                console.log(`✅ ${imgId} loaded`);
-                                checkImage();
-                            };
-                            
-                            img.onerror = () => {
-                                console.error(`❌ ${imgId} failed to load:`, img.src);
-                                logDebug({hypothesisId: 'C', message: `Image ${idx} failed to load`, data: {
-                                    id: imgId,
-                                    src: img.src,
-                                    attemptedSrc: img.getAttribute('src')
-                                }});
-                            };
-                        }
-                        
-                        checkImage();
-                    });
-                }, 1000);
-            });
-        })();
-        // #endregion
     </script>
-
 </body>
 </html>

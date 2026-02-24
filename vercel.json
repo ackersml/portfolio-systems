@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "michelle-ackers",
+  "name": "cornerstonedevs",
   "builds": [
     {
       "src": "*.html",
