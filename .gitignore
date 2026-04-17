@@ -4,6 +4,7 @@
 *.env
 .DS_Store
 node_modules/
+.next/
 Software/
 Instagram Strategy/
 .cursor/
@@ -16,3 +17,4 @@ Instagram Strategy/
 .venv/
 __pycache__/
 *.log
+.env*.local
