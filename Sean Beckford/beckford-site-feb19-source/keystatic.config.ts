@@ -4,11 +4,30 @@ import { config, fields, singleton } from "@keystatic/core";
 const githubRepo = (process.env.KEYSTATIC_GITHUB_REPO ??
   "ackersml/beckford-moves") as `${string}/${string}`;
 
+const marketingHeroSchema = {
+  heroKicker: fields.text({ label: "Eyebrow / badge" }),
+  heroHeadingLine1: fields.text({ label: "Heading line 1 (before accent)" }),
+  heroHeadingLine2: fields.text({ label: "Heading line 2 (accent gradient)" }),
+  heroSubheading: fields.text({ label: "Subheading", multiline: true }),
+};
+
 export default config({
   storage:
     process.env.KEYSTATIC_LOCAL === "true"
       ? { kind: "local" }
       : { kind: "github", repo: githubRepo },
+  ui: {
+    navigation: [
+      "homepage",
+      "howItWorks",
+      "about",
+      "packages",
+      "successStories",
+      "fstMassageTherapy",
+      "blog",
+      "contact",
+    ],
+  },
   singletons: {
     homepage: singleton({
       label: "Homepage",
@@ -24,6 +43,10 @@ export default config({
         aboutIntro: fields.text({ label: "Homepage About Intro" }),
       },
     }),
+    howItWorks: singleton({
+      label: "How It Works",
+      schema: marketingHeroSchema,
+    }),
     about: singleton({
       label: "About Page",
       schema: {
@@ -32,6 +55,26 @@ export default config({
         storyHeading: fields.text({ label: "Story Section Heading" }),
         storyIntro: fields.text({ label: "Story Intro" }),
       },
+    }),
+    packages: singleton({
+      label: "Packages",
+      schema: marketingHeroSchema,
+    }),
+    successStories: singleton({
+      label: "Success Stories",
+      schema: marketingHeroSchema,
+    }),
+    fstMassageTherapy: singleton({
+      label: "RMT & FST",
+      schema: marketingHeroSchema,
+    }),
+    blog: singleton({
+      label: "Blog",
+      schema: marketingHeroSchema,
+    }),
+    contact: singleton({
+      label: "Contact",
+      schema: marketingHeroSchema,
     }),
   },
 });
