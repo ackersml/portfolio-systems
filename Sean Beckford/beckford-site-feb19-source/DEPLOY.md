@@ -45,7 +45,11 @@ Copy names from **`env.example`**. Set values in **Vercel → Project → Settin
 
 Redeploy after changing env vars (**Deployments → Redeploy** or an empty commit).
 
-## 4. GitHub OAuth app (Keystatic login)
+## 4. Verify the right Keystatic mode (after deploy)
+
+Open `/keystatic` on the live site. If the button says **Log in with Keystatic Cloud**, the deployment is still using **`storage: { kind: "cloud" }`** in `keystatic.config.ts` or an old build. The repo on **`ackersml/beckford-moves`** should use **`kind: "github"`** with your three `KEYSTATIC_*` env vars. After a successful deploy you should see **GitHub** login (or equivalent), not Keystatic Cloud.
+
+## 5. GitHub OAuth app (Keystatic login)
 
 Create or edit a **GitHub OAuth App** (not necessarily Keystatic Cloud):
 
@@ -62,15 +66,15 @@ The site redirects apex → `www` for pages, but OAuth may hit either host depen
 
 Register the app, copy **Client ID** and generate **Client secret** into Vercel as above.
 
-## 5. Repo access for editors
+## 6. Repo access for editors
 
 Anyone using `/keystatic` must be able to **push** to **`ackersml/beckford-moves`** (or the repo in `KEYSTATIC_GITHUB_REPO`). Add them as a collaborator or use a team account with write access.
 
-## 6. Sanity / Stripe
+## 7. Sanity / Stripe
 
 If the site uses Sanity or Stripe, configure those variables per `env.example`. They are independent of Keystatic.
 
-## 7. Syncing this folder with GitHub
+## 8. Syncing this folder with GitHub
 
 This folder (`beckford-site-feb19-source` in **portfolio-systems**) is the **canonical app snapshot**. To align **`ackersml/beckford-moves`**:
 
